@@ -15,6 +15,7 @@
 		EF52F26220450DD200998D0F /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F26120450DD200998D0F /* MainTabBarController.swift */; };
 		EF52F2652045219700998D0F /* PodcastsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F2642045219700998D0F /* PodcastsSearchController.swift */; };
 		EF52F2682045227400998D0F /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F2672045227400998D0F /* Podcast.swift */; };
+		EF52F26B20452BD700998D0F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF52F26A20452BD700998D0F /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		EF52F26120450DD200998D0F /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		EF52F2642045219700998D0F /* PodcastsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsSearchController.swift; sourceTree = "<group>"; };
 		EF52F2672045227400998D0F /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
+		EF52F26A20452BD700998D0F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF52F26B20452BD700998D0F /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +49,7 @@
 			children = (
 				EF52F24E20450B1C00998D0F /* CopyPodcasts */,
 				EF52F24D20450B1C00998D0F /* Products */,
+				EF52F26920452BD700998D0F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +93,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		EF52F26920452BD700998D0F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EF52F26A20452BD700998D0F /* Alamofire.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -99,6 +111,7 @@
 				EF52F24820450B1C00998D0F /* Sources */,
 				EF52F24920450B1C00998D0F /* Frameworks */,
 				EF52F24A20450B1C00998D0F /* Resources */,
+				EF52F26C20452BE600998D0F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -155,6 +168,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EF52F26C20452BE600998D0F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EF52F24820450B1C00998D0F /* Sources */ = {
@@ -304,6 +334,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 827YX997NH;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = CopyPodcasts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.krgoodnews.CopyPodcasts;
@@ -319,6 +353,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 827YX997NH;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = CopyPodcasts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.krgoodnews.CopyPodcasts;
