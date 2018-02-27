@@ -13,6 +13,8 @@
 		EF52F25720450B1C00998D0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF52F25620450B1C00998D0F /* Assets.xcassets */; };
 		EF52F25A20450B1C00998D0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF52F25820450B1C00998D0F /* LaunchScreen.storyboard */; };
 		EF52F26220450DD200998D0F /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F26120450DD200998D0F /* MainTabBarController.swift */; };
+		EF52F2652045219700998D0F /* PodcastsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F2642045219700998D0F /* PodcastsSearchController.swift */; };
+		EF52F2682045227400998D0F /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F2672045227400998D0F /* Podcast.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		EF52F25920450B1C00998D0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EF52F25B20450B1C00998D0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF52F26120450DD200998D0F /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		EF52F2642045219700998D0F /* PodcastsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsSearchController.swift; sourceTree = "<group>"; };
+		EF52F2672045227400998D0F /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 		EF52F24E20450B1C00998D0F /* CopyPodcasts */ = {
 			isa = PBXGroup;
 			children = (
+				EF52F2662045226200998D0F /* Models */,
+				EF52F2632045218000998D0F /* Controllers */,
 				EF52F24F20450B1C00998D0F /* AppDelegate.swift */,
 				EF52F25120450B1C00998D0F /* ViewController.swift */,
 				EF52F25320450B1C00998D0F /* Main.storyboard */,
@@ -65,6 +71,22 @@
 				EF52F26120450DD200998D0F /* MainTabBarController.swift */,
 			);
 			path = CopyPodcasts;
+			sourceTree = "<group>";
+		};
+		EF52F2632045218000998D0F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EF52F2642045219700998D0F /* PodcastsSearchController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		EF52F2662045226200998D0F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EF52F2672045227400998D0F /* Podcast.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,9 +161,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF52F2652045219700998D0F /* PodcastsSearchController.swift in Sources */,
 				EF52F25220450B1C00998D0F /* ViewController.swift in Sources */,
 				EF52F25020450B1C00998D0F /* AppDelegate.swift in Sources */,
 				EF52F26220450DD200998D0F /* MainTabBarController.swift in Sources */,
+				EF52F2682045227400998D0F /* Podcast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
