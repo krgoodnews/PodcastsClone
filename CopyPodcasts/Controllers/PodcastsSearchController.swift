@@ -39,7 +39,10 @@ class PodcastsSearchController: UITableViewController {
 	}
 	
 	fileprivate func setupTableView() {
-		tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellID)
+
+		tableView.tableFooterView = UIView()
+		let nib = UINib(nibName: "PodcastCell", bundle: nil)
+		tableView.register(nib, forCellReuseIdentifier: cellID)
 	}
 	
 	// MARK: - TableView
@@ -49,52 +52,44 @@ class PodcastsSearchController: UITableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath)
+		let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! PodcastCell
 		
 		let podcast = self.podcasts[indexPath.row]
-		cell.textLabel?.text = "\(podcast.trackName ?? "-")\n\(podcast.artistName ?? "-")"
-		cell.textLabel?.numberOfLines = -1
-		cell.imageView?.image = #imageLiteral(resourceName: "appicon")
+		
+		cell.podcast = podcast
+		
+//		cell.textLabel?.text = "\(podcast.trackName ?? "-")\n\(podcast.artistName ?? "-")"
+//		cell.textLabel?.numberOfLines = -1
+//		cell.imageView?.image = #imageLiteral(resourceName: "appicon")
 		
 		return cell
 	}
 	
-	struct SearchResults: Decodable {
-		let resultCount: Int
-		let results: [Podcast]
+	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return 132
+	}
+	
+	
+	// header & footer
+	
+	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		let label = UILabel()
+		label.text = "Please enter a Search Term"
+		label.textAlignment = .center
+		label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+		return label
+	}
+	
+	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return self.podcasts.count == 0 ? 250 : 0
 	}
 }
 
 extension PodcastsSearchController: UISearchBarDelegate {
 	
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-		print(searchText)
-		
-//		let url = "https://itunes.apple.com/search?term=\(searchText)"
-		
-		let url = "https://itunes.apple.com/search"
-		let parameters: Parameters = [
-			"term": searchText,
-			"media": "podcast"
-		]
-		
-		Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseData { (dataResponse) in
-			if let err = dataResponse.error {
-				print("Failed to contact yahoo", err)
-				return
-			}
-			
-			guard let data = dataResponse.data else { return }
-			
-			do {
-				let searchResult = try JSONDecoder().decode(SearchResults.self, from: data)
-		
-				self.podcasts = searchResult.results
-			} catch let decodeErr {
-				print("Failed to decode:", decodeErr)
-			}
-			
-			
+		APIService.shared.fetchPodcasts(searchText: searchText) { (podcasts) in
+			self.podcasts = podcasts
 		}
 	}
 	

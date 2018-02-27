@@ -16,6 +16,10 @@
 		EF52F2652045219700998D0F /* PodcastsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F2642045219700998D0F /* PodcastsSearchController.swift */; };
 		EF52F2682045227400998D0F /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F2672045227400998D0F /* Podcast.swift */; };
 		EF52F26B20452BD700998D0F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF52F26A20452BD700998D0F /* Alamofire.framework */; };
+		EF52F26F204543DD00998D0F /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F26E204543DD00998D0F /* APIService.swift */; };
+		EF52F27220454A0100998D0F /* PodcastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF52F27120454A0100998D0F /* PodcastCell.xib */; };
+		EF52F27420454E6600998D0F /* PodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F27320454E6600998D0F /* PodcastCell.swift */; };
+		EF52F27620455B9C00998D0F /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF52F27520455B9C00998D0F /* SDWebImage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		EF52F2642045219700998D0F /* PodcastsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsSearchController.swift; sourceTree = "<group>"; };
 		EF52F2672045227400998D0F /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
 		EF52F26A20452BD700998D0F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		EF52F26E204543DD00998D0F /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		EF52F27120454A0100998D0F /* PodcastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastCell.xib; sourceTree = "<group>"; };
+		EF52F27320454E6600998D0F /* PodcastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastCell.swift; sourceTree = "<group>"; };
+		EF52F27520455B9C00998D0F /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF52F27620455B9C00998D0F /* SDWebImage.framework in Frameworks */,
 				EF52F26B20452BD700998D0F /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,6 +73,8 @@
 		EF52F24E20450B1C00998D0F /* CopyPodcasts */ = {
 			isa = PBXGroup;
 			children = (
+				EF52F270204549E900998D0F /* Views */,
+				EF52F26D204543CB00998D0F /* API */,
 				EF52F2662045226200998D0F /* Models */,
 				EF52F2632045218000998D0F /* Controllers */,
 				EF52F24F20450B1C00998D0F /* AppDelegate.swift */,
@@ -96,9 +107,27 @@
 		EF52F26920452BD700998D0F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EF52F27520455B9C00998D0F /* SDWebImage.framework */,
 				EF52F26A20452BD700998D0F /* Alamofire.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EF52F26D204543CB00998D0F /* API */ = {
+			isa = PBXGroup;
+			children = (
+				EF52F26E204543DD00998D0F /* APIService.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		EF52F270204549E900998D0F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EF52F27120454A0100998D0F /* PodcastCell.xib */,
+				EF52F27320454E6600998D0F /* PodcastCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +192,7 @@
 			files = (
 				EF52F25A20450B1C00998D0F /* LaunchScreen.storyboard in Resources */,
 				EF52F25720450B1C00998D0F /* Assets.xcassets in Resources */,
+				EF52F27220454A0100998D0F /* PodcastCell.xib in Resources */,
 				EF52F25520450B1C00998D0F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -177,6 +207,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SDWebImage.framework",
 			);
 			outputPaths = (
 			);
@@ -195,7 +226,9 @@
 				EF52F25220450B1C00998D0F /* ViewController.swift in Sources */,
 				EF52F25020450B1C00998D0F /* AppDelegate.swift in Sources */,
 				EF52F26220450DD200998D0F /* MainTabBarController.swift in Sources */,
+				EF52F26F204543DD00998D0F /* APIService.swift in Sources */,
 				EF52F2682045227400998D0F /* Podcast.swift in Sources */,
+				EF52F27420454E6600998D0F /* PodcastCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +372,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = CopyPodcasts/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.krgoodnews.CopyPodcasts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -358,6 +392,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = CopyPodcasts/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.krgoodnews.CopyPodcasts;
 				PRODUCT_NAME = "$(TARGET_NAME)";

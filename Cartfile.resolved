@@ -1,1 +1,2 @@
 github "Alamofire/Alamofire" "4.6.0"
+github "rs/SDWebImage" "4.3.1"
