@@ -32,6 +32,7 @@ class PodcastsSearchController: UITableViewController {
 	// MARK: - Setup Work
 	
 	fileprivate func setupSearchBar() {
+		self.definesPresentationContext = true
 		navigationItem.searchController = searchController
 		navigationItem.hidesSearchBarWhenScrolling = false
 		searchController.dimsBackgroundDuringPresentation = false
@@ -47,6 +48,13 @@ class PodcastsSearchController: UITableViewController {
 	
 	// MARK: - TableView
 	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		let selectedPodcast = podcasts[indexPath.row]
+		
+		let destVC = EpisodesController()
+		destVC.podcast = selectedPodcast
+		navigationController?.pushViewController(destVC, animated: true)
+	}
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return podcasts.count
 	}
@@ -81,7 +89,9 @@ class PodcastsSearchController: UITableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-		return self.podcasts.count == 0 ? 250 : 0
+		
+		// terary operator
+		return self.podcasts.count > 0 ? 0 : 250
 	}
 }
 

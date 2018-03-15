@@ -20,6 +20,13 @@
 		EF52F27220454A0100998D0F /* PodcastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF52F27120454A0100998D0F /* PodcastCell.xib */; };
 		EF52F27420454E6600998D0F /* PodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F27320454E6600998D0F /* PodcastCell.swift */; };
 		EF52F27620455B9C00998D0F /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF52F27520455B9C00998D0F /* SDWebImage.framework */; };
+		EF52F2AB2053F72500998D0F /* EpisodesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F2AA2053F72500998D0F /* EpisodesController.swift */; };
+		EF52F2AD20541C5100998D0F /* FeedKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF52F2AC20541C5100998D0F /* FeedKit.framework */; };
+		EF52F2AF20549D9C00998D0F /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F2AE20549D9C00998D0F /* Episode.swift */; };
+		EF52F2B220549E4100998D0F /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F2B020549E4100998D0F /* EpisodeCell.swift */; };
+		EF52F2B320549E4100998D0F /* EpisodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF52F2B120549E4100998D0F /* EpisodeCell.xib */; };
+		EF52F2B62054C0F300998D0F /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F2B52054C0F300998D0F /* String+.swift */; };
+		EF52F2B82054C24600998D0F /* RSSFeed+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F2B72054C24600998D0F /* RSSFeed+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +45,13 @@
 		EF52F27120454A0100998D0F /* PodcastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastCell.xib; sourceTree = "<group>"; };
 		EF52F27320454E6600998D0F /* PodcastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastCell.swift; sourceTree = "<group>"; };
 		EF52F27520455B9C00998D0F /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
+		EF52F2AA2053F72500998D0F /* EpisodesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesController.swift; sourceTree = "<group>"; };
+		EF52F2AC20541C5100998D0F /* FeedKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FeedKit.framework; path = Carthage/Build/iOS/FeedKit.framework; sourceTree = "<group>"; };
+		EF52F2AE20549D9C00998D0F /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		EF52F2B020549E4100998D0F /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
+		EF52F2B120549E4100998D0F /* EpisodeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeCell.xib; sourceTree = "<group>"; };
+		EF52F2B52054C0F300998D0F /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		EF52F2B72054C24600998D0F /* RSSFeed+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RSSFeed+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF52F2AD20541C5100998D0F /* FeedKit.framework in Frameworks */,
 				EF52F27620455B9C00998D0F /* SDWebImage.framework in Frameworks */,
 				EF52F26B20452BD700998D0F /* Alamofire.framework in Frameworks */,
 			);
@@ -73,6 +88,7 @@
 		EF52F24E20450B1C00998D0F /* CopyPodcasts */ = {
 			isa = PBXGroup;
 			children = (
+				EF52F2B42054C0E700998D0F /* Extensions */,
 				EF52F270204549E900998D0F /* Views */,
 				EF52F26D204543CB00998D0F /* API */,
 				EF52F2662045226200998D0F /* Models */,
@@ -92,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				EF52F2642045219700998D0F /* PodcastsSearchController.swift */,
+				EF52F2AA2053F72500998D0F /* EpisodesController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -100,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				EF52F2672045227400998D0F /* Podcast.swift */,
+				EF52F2AE20549D9C00998D0F /* Episode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -107,6 +125,7 @@
 		EF52F26920452BD700998D0F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EF52F2AC20541C5100998D0F /* FeedKit.framework */,
 				EF52F27520455B9C00998D0F /* SDWebImage.framework */,
 				EF52F26A20452BD700998D0F /* Alamofire.framework */,
 			);
@@ -126,8 +145,19 @@
 			children = (
 				EF52F27120454A0100998D0F /* PodcastCell.xib */,
 				EF52F27320454E6600998D0F /* PodcastCell.swift */,
+				EF52F2B020549E4100998D0F /* EpisodeCell.swift */,
+				EF52F2B120549E4100998D0F /* EpisodeCell.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		EF52F2B42054C0E700998D0F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EF52F2B52054C0F300998D0F /* String+.swift */,
+				EF52F2B72054C24600998D0F /* RSSFeed+.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +222,7 @@
 			files = (
 				EF52F25A20450B1C00998D0F /* LaunchScreen.storyboard in Resources */,
 				EF52F25720450B1C00998D0F /* Assets.xcassets in Resources */,
+				EF52F2B320549E4100998D0F /* EpisodeCell.xib in Resources */,
 				EF52F27220454A0100998D0F /* PodcastCell.xib in Resources */,
 				EF52F25520450B1C00998D0F /* Main.storyboard in Resources */,
 			);
@@ -208,6 +239,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SDWebImage.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FeedKit.framework",
 			);
 			outputPaths = (
 			);
@@ -222,12 +254,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF52F2B82054C24600998D0F /* RSSFeed+.swift in Sources */,
 				EF52F2652045219700998D0F /* PodcastsSearchController.swift in Sources */,
 				EF52F25220450B1C00998D0F /* ViewController.swift in Sources */,
 				EF52F25020450B1C00998D0F /* AppDelegate.swift in Sources */,
+				EF52F2AB2053F72500998D0F /* EpisodesController.swift in Sources */,
 				EF52F26220450DD200998D0F /* MainTabBarController.swift in Sources */,
+				EF52F2B220549E4100998D0F /* EpisodeCell.swift in Sources */,
 				EF52F26F204543DD00998D0F /* APIService.swift in Sources */,
+				EF52F2B62054C0F300998D0F /* String+.swift in Sources */,
 				EF52F2682045227400998D0F /* Podcast.swift in Sources */,
+				EF52F2AF20549D9C00998D0F /* Episode.swift in Sources */,
 				EF52F27420454E6600998D0F /* PodcastCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
