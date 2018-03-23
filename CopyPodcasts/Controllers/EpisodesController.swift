@@ -60,6 +60,7 @@ class EpisodesController: UITableViewController {
 		
 		let playerDetailsView = Bundle.main.loadNibNamed("PlayerDetailView", owner: self, options: nil)?.first as! PlayerDetailView
 		playerDetailsView.episode = episode
+		
 		playerDetailsView.frame = self.view.frame
 		window?.addSubview(playerDetailsView)
 	}
