@@ -83,7 +83,38 @@ class PlayerDetailView: UIView {
 	@IBAction func handleDismiss(_ sender: Any) {
 		self.removeFromSuperview()
 	}
+	@IBAction func handleCurrentTimeSliderChange(_ sender: UISlider) {
+		print("Slider Value:", currentTimeSlider.value)
+		let percentage = Float64(currentTimeSlider.value)
+		
+		guard let duration = player.currentItem?.duration else { return }
+		
+		let durationInSeconds = CMTimeGetSeconds(duration)
+		let seekTimeInSeconds = percentage * durationInSeconds
+		
+		let seekTime = CMTimeMakeWithSeconds(seekTimeInSeconds, 1)
+		
+		player.seek(to: seekTime)
+	}
 	
+	@IBAction func didTapRewind(_ sender: UIButton) {
+		seekToCurrentTime(-15)
+	}
+	
+	@IBAction func didTapFastForward(_ sender: UIButton) {
+		seekToCurrentTime(15)
+	}
+	
+	// delta초만큼 이동
+	fileprivate func seekToCurrentTime(_ delta: Int64) {
+		let fifteenSeconds = CMTimeMake(delta, 1)
+		let seekTime = CMTimeAdd(player.currentTime(), fifteenSeconds)
+		player.seek(to: seekTime)
+	}
+	
+	@IBAction func handleVolumeChange(_ sender: UISlider) {
+		player.volume = sender.value
+	}
 	fileprivate func enlargeEpisodeImageView() {
 		UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
 			self.episodeImageView.transform = .identity
