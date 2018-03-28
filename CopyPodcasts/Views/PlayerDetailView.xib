@@ -38,7 +38,7 @@
                                 <constraint firstAttribute="width" secondItem="SWp-02-hnv" secondAttribute="height" id="ytE-It-wP1"/>
                             </constraints>
                         </imageView>
-                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="JlK-lM-RXe">
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="JlK-lM-RXe">
                             <rect key="frame" x="-2" y="420" width="370" height="37"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="HZP-tX-Qqy"/>
@@ -47,15 +47,15 @@
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xYY-OD-9sc">
                             <rect key="frame" x="0.0" y="461" width="366" height="22"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uP1-Lj-fqX">
-                                    <rect key="frame" x="0.0" y="0.0" width="293.66666666666669" height="22"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uP1-Lj-fqX">
+                                    <rect key="frame" x="0.0" y="0.0" width="39" height="22"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="88:88:88" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C2E-HU-g1h">
-                                    <rect key="frame" x="293.66666666666669" y="0.0" width="72.333333333333314" height="22"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="--:--" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C2E-HU-g1h">
+                                    <rect key="frame" x="39" y="0.0" width="327" height="22"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -163,6 +163,9 @@
             <viewLayoutGuide key="safeArea" id="0Jg-61-Qop"/>
             <connections>
                 <outlet property="authorLabel" destination="aYR-2Z-5ef" id="JVs-ga-fAC"/>
+                <outlet property="currentTimeLabel" destination="uP1-Lj-fqX" id="kpq-Vy-0xZ"/>
+                <outlet property="currentTimeSlider" destination="JlK-lM-RXe" id="RXJ-pu-c9l"/>
+                <outlet property="durationLabel" destination="C2E-HU-g1h" id="SIh-cQ-ky8"/>
                 <outlet property="episodeImageView" destination="SWp-02-hnv" id="7KP-EE-kPl"/>
                 <outlet property="playPauseButton" destination="oBv-ro-1mJ" id="12m-iX-x7B"/>
                 <outlet property="titleLabel" destination="uPc-nB-OE0" id="fHy-SP-Sje"/>

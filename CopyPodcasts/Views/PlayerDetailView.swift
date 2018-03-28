@@ -37,8 +37,34 @@ class PlayerDetailView: UIView {
 		return avPlayer
 	}()
 	
+	
+	// 현재 시간 표시하기
+	fileprivate func observePlayerCurrentTime() {
+		let interval = CMTimeMake(1, 2)
+		player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { (time) in
+			
+			self.currentTimeLabel.text = time.toDisplayString()
+			
+			let durationTime = self.player.currentItem?.duration
+			
+			self.durationLabel.text = durationTime?.toDisplayString()
+			
+			self.updateCurrentTimeSlider()
+		}
+	}
+	
+	fileprivate func updateCurrentTimeSlider() {
+		let currentTimeSeconds = CMTimeGetSeconds(player.currentTime())
+		let durationSeconds = CMTimeGetSeconds(player.currentItem?.duration ?? CMTimeMake(1, 1))
+		let percentage = currentTimeSeconds / durationSeconds
+		
+		self.currentTimeSlider.value = Float(percentage)
+	}
+	
 	override func awakeFromNib() {
 		super.awakeFromNib()
+		
+		observePlayerCurrentTime()
 		
 		let time = CMTimeMake(1, 3)
 		let times = [NSValue(time: time)]
@@ -51,6 +77,9 @@ class PlayerDetailView: UIView {
 	
 	// MARK: - IBActions & Outlets
 	
+	@IBOutlet weak var currentTimeSlider: UISlider!
+	@IBOutlet weak var currentTimeLabel: UILabel!
+	@IBOutlet weak var durationLabel: UILabel!
 	@IBAction func handleDismiss(_ sender: Any) {
 		self.removeFromSuperview()
 	}
