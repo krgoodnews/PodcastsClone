@@ -24,8 +24,6 @@ class PlayerDetailView: UIView {
 	}
 	
 	fileprivate func playEpisode() {
-		
-		
 		print("Trying to play episode at url:", episode.streamUrl)
 		guard let url = URL(string: episode.streamUrl) else { return }
 		let playerItem = AVPlayerItem(url: url)
@@ -39,11 +37,46 @@ class PlayerDetailView: UIView {
 		return avPlayer
 	}()
 	
+	override func awakeFromNib() {
+		super.awakeFromNib()
+		
+		let time = CMTimeMake(1, 3)
+		let times = [NSValue(time: time)]
+		player.addBoundaryTimeObserver(forTimes: times, queue: .main) {
+			print("Episode started playing")
+			self.enlargeEpisodeImageView()
+		}
+	}
+	
+	
+	// MARK: - IBActions & Outlets
+	
 	@IBAction func handleDismiss(_ sender: Any) {
 		self.removeFromSuperview()
 	}
 	
-	@IBOutlet weak var episodeImageView: UIImageView!
+	fileprivate func enlargeEpisodeImageView() {
+		UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+			self.episodeImageView.transform = .identity
+		})
+	}
+	
+	fileprivate let shrunkenTransform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+	
+	fileprivate func shrinkEpisodeImageView() {
+		UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+			self.episodeImageView.transform = self.shrunkenTransform
+		})
+	}
+	
+	
+	@IBOutlet weak var episodeImageView: UIImageView! {
+		didSet {
+			episodeImageView.layer.cornerRadius = 5
+			episodeImageView.clipsToBounds = true
+			episodeImageView.transform = shrunkenTransform
+		}
+	}
 	
 	
 	@IBOutlet weak var titleLabel: UILabel! {
@@ -64,9 +97,11 @@ class PlayerDetailView: UIView {
 		if player.timeControlStatus == .paused {
 			player.play()
 			playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+			enlargeEpisodeImageView()
 		} else {
 			player.pause()
 			playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+			shrinkEpisodeImageView()
 		}
 	}
 }
