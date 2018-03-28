@@ -9,9 +9,14 @@
 import AVKit
 
 extension CMTime {
-	
-	
+
 	func toDisplayString() -> String {
+		
+		// Float -> Int 과정에서 Fatal Error이 떠서 변경
+		let floatTotalSeconds = CMTimeGetSeconds(self)
+		guard !(floatTotalSeconds.isNaN || floatTotalSeconds.isInfinite) else {
+			return "--:--"
+		}
 		let totalSeconds = Int(CMTimeGetSeconds(self))
 		print("Total seconds:", totalSeconds)
 		
