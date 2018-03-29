@@ -81,4 +81,15 @@ class EpisodesController: UITableViewController {
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return 134
 	}
+	
+	override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+		let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+		activityIndicatorView.color = .darkGray
+		activityIndicatorView.startAnimating()
+		return activityIndicatorView
+	}
+	
+	override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+		return episodes.isEmpty ? 200 : 0
+	}
 }

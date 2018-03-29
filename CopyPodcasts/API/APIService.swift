@@ -21,19 +21,25 @@ class APIService {
 		let secureFeedUrl = feedUrl.contains("https") ? feedUrl : feedUrl.replacingOccurrences(of: "http", with: "https")
 		
 		guard let url = URL(string: secureFeedUrl) else { return }
-		let parser = FeedParser(URL: url)
-		parser?.parseAsync(result: { (result) in
-			print("Successfully parse feed:", result.isSuccess)
+		
+		DispatchQueue.global(qos: .background).async {
+			print("Before parser")
+			let parser = FeedParser(URL: url)
+			print("After parser")
 			
-			if let err = result.error {
-				print("Failed to parse XML feed:", err)
-			}
-			
-			guard let feed = result.rssFeed else { return }
-			
-			completion(feed.toEpisodes())
-			
-		})
+			parser?.parseAsync(result: { (result) in
+				print("Successfully parse feed:", result.isSuccess)
+				
+				if let err = result.error {
+					print("Failed to parse XML feed:", err)
+				}
+				
+				guard let feed = result.rssFeed else { return }
+				
+				completion(feed.toEpisodes())
+				
+			})
+		}
 	}
 	
 	func fetchMusic() {

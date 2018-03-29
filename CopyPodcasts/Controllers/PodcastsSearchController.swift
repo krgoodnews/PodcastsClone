@@ -11,6 +11,8 @@ import Alamofire
 
 class PodcastsSearchController: UITableViewController {
 	
+	var timer: Timer?
+	
 	var podcasts: [Podcast] = [] {
 		didSet {
 			self.tableView.reloadData()
@@ -100,9 +102,13 @@ class PodcastsSearchController: UITableViewController {
 extension PodcastsSearchController: UISearchBarDelegate {
 	
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-		APIService.shared.fetchPodcasts(searchText: searchText) { (podcasts) in
-			self.podcasts = podcasts
-		}
+		
+		timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (timer) in
+			APIService.shared.fetchPodcasts(searchText: searchText) { (podcasts) in
+				self.podcasts = podcasts
+			}
+		})
+		
 	}
 	
 }

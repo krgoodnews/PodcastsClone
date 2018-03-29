@@ -41,15 +41,15 @@ class PlayerDetailView: UIView {
 	// 현재 시간 표시하기
 	fileprivate func observePlayerCurrentTime() {
 		let interval = CMTimeMake(1, 2)
-		player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { (time) in
+		player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] (time) in
 			
-			self.currentTimeLabel.text = time.toDisplayString()
+			self?.currentTimeLabel.text = time.toDisplayString()
 			
-			let durationTime = self.player.currentItem?.duration
+			let durationTime = self?.player.currentItem?.duration
 			
-			self.durationLabel.text = durationTime?.toDisplayString()
+			self?.durationLabel.text = durationTime?.toDisplayString()
 			
-			self.updateCurrentTimeSlider()
+			self?.updateCurrentTimeSlider()
 		}
 	}
 	
@@ -68,10 +68,17 @@ class PlayerDetailView: UIView {
 		
 		let time = CMTimeMake(1, 3)
 		let times = [NSValue(time: time)]
-		player.addBoundaryTimeObserver(forTimes: times, queue: .main) {
+		
+		// player has a reference to self
+		// self has a reference to player
+		player.addBoundaryTimeObserver(forTimes: times, queue: .main) { [weak self] in
 			print("Episode started playing")
-			self.enlargeEpisodeImageView()
+			self?.enlargeEpisodeImageView()
 		}
+	}
+	
+	deinit {
+		print("PlayerDetailsView memory being reclaimed...")
 	}
 	
 	
