@@ -58,7 +58,8 @@ class EpisodesController: UITableViewController {
 		
 		let window = UIApplication.shared.keyWindow
 		
-		let playerDetailsView = Bundle.main.loadNibNamed("PlayerDetailView", owner: self, options: nil)?.first as! PlayerDetailView
+//		let playerDetailsView = Bundle.main.loadNibNamed("PlayerDetailView", owner: self, options: nil)?.first as! PlayerDetailView
+		let playerDetailsView = PlayerDetailView.initFromNib()
 		playerDetailsView.episode = episode
 		
 		playerDetailsView.frame = self.view.frame
