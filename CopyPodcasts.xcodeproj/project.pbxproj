@@ -30,6 +30,8 @@
 		EF75A6B0205A8EF100C8ED87 /* PlayerDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF75A6AF205A8EF100C8ED87 /* PlayerDetailView.xib */; };
 		EF75A6B2205A911700C8ED87 /* PlayerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF75A6B1205A911700C8ED87 /* PlayerDetailView.swift */; };
 		EFD6D578206BD69F00A77578 /* CMTime+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD6D577206BD69F00A77578 /* CMTime+.swift */; };
+		EFDFA5DE2085D63C002699B3 /* PlayerDetailsView+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDFA5DD2085D63C002699B3 /* PlayerDetailsView+Gestures.swift */; };
+		EFDFA5E02085E6B8002699B3 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDFA5DF2085E6B8002699B3 /* UIApplication.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		EF75A6AF205A8EF100C8ED87 /* PlayerDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerDetailView.xib; sourceTree = "<group>"; };
 		EF75A6B1205A911700C8ED87 /* PlayerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailView.swift; sourceTree = "<group>"; };
 		EFD6D577206BD69F00A77578 /* CMTime+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime+.swift"; sourceTree = "<group>"; };
+		EFDFA5DD2085D63C002699B3 /* PlayerDetailsView+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerDetailsView+Gestures.swift"; sourceTree = "<group>"; };
+		EFDFA5DF2085E6B8002699B3 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +159,8 @@
 				EF52F2B120549E4100998D0F /* EpisodeCell.xib */,
 				EF75A6AF205A8EF100C8ED87 /* PlayerDetailView.xib */,
 				EF75A6B1205A911700C8ED87 /* PlayerDetailView.swift */,
+				EFDFA5DF2085E6B8002699B3 /* UIApplication.swift */,
+				EFDFA5DD2085D63C002699B3 /* PlayerDetailsView+Gestures.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -264,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFDFA5E02085E6B8002699B3 /* UIApplication.swift in Sources */,
 				EF52F2B82054C24600998D0F /* RSSFeed+.swift in Sources */,
 				EF52F2652045219700998D0F /* PodcastsSearchController.swift in Sources */,
 				EF75A6B2205A911700C8ED87 /* PlayerDetailView.swift in Sources */,
@@ -271,6 +278,7 @@
 				EF52F25020450B1C00998D0F /* AppDelegate.swift in Sources */,
 				EF52F2AB2053F72500998D0F /* EpisodesController.swift in Sources */,
 				EF52F26220450DD200998D0F /* MainTabBarController.swift in Sources */,
+				EFDFA5DE2085D63C002699B3 /* PlayerDetailsView+Gestures.swift in Sources */,
 				EF52F2B220549E4100998D0F /* EpisodeCell.swift in Sources */,
 				EF52F26F204543DD00998D0F /* APIService.swift in Sources */,
 				EF52F2B62054C0F300998D0F /* String+.swift in Sources */,
