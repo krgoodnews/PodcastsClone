@@ -8,6 +8,7 @@
 
 import UIKit
 import AVKit
+import MediaPlayer
 
 class PlayerDetailView: UIView {
 	
@@ -96,6 +97,13 @@ class PlayerDetailView: UIView {
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		
+		
+		// for Background Audio
+		setupRemoteControl()
+		setupAudioSession()
+		
+		
+		
 		setupGestures()
 		
 		observePlayerCurrentTime()
@@ -111,6 +119,49 @@ class PlayerDetailView: UIView {
 		}
 	}
 	
+	
+	
+	fileprivate func setupRemoteControl() {
+		// 제어센터에서 플레이어를 컨트롤 할 수 있게 도와준다.
+		UIApplication.shared.beginReceivingRemoteControlEvents()
+		
+		let commandCenter = MPRemoteCommandCenter.shared()
+		commandCenter.playCommand.isEnabled = true
+		commandCenter.playCommand.addTarget { (_) -> MPRemoteCommandHandlerStatus in
+			
+			self.player.play()
+			self.playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+			self.miniPlayPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+			return .success
+		}
+		
+		commandCenter.pauseCommand.isEnabled = true
+		commandCenter.pauseCommand.addTarget { (_) -> MPRemoteCommandHandlerStatus in
+			
+			self.player.pause()
+			self.playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+			self.miniPlayPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+			return .success
+		}
+		
+		commandCenter.togglePlayPauseCommand.isEnabled = true // for earphone
+		commandCenter.togglePlayPauseCommand.addTarget { (_) -> MPRemoteCommandHandlerStatus in
+			
+			self.didTapPlayPause()
+			
+			return .success
+		}
+		
+	}
+	
+	fileprivate func setupAudioSession() {
+		do {
+			try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+			try AVAudioSession.sharedInstance().setActive(true)
+		} catch let sessionErr {
+			print("Failed to activate session:", sessionErr)
+		}
+	}
 	
 	
 	@objc private func didTapMaximize() {
