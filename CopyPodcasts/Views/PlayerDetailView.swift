@@ -18,12 +18,41 @@ class PlayerDetailView: UIView {
 			titleLabel.text = episode.title
 			authorLabel.text = episode.author
 			
+			setupNowPlayingInfo()
+			
 			playEpisode()
 			
 			let url = URL(string: episode.imageUrl?.toSecureHTTPS() ?? "")
 			episodeImageView.sd_setImage(with: url)
-			miniEpisodeImageView.sd_setImage(with: url)
+			
+			
+			miniEpisodeImageView.sd_setImage(with: url) { (image, _, _, _) in
+				
+				guard let image = image else { return }
+				
+				// LockScreen artwork setup code
+				var nowPlayingInfo = MPNowPlayingInfoCenter.default().nowPlayingInfo
+				
+				// some modifications here
+				let artwork = MPMediaItemArtwork(boundsSize: image.size, requestHandler: { (_) -> UIImage in
+					return image
+				})
+				nowPlayingInfo?[MPMediaItemPropertyArtwork] = artwork
+				
+				MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+			}
 		}
+	}
+	
+	
+	// setupNowPlayingInfo on LockScreen
+	fileprivate func setupNowPlayingInfo() {
+		var nowPlayingInfo = [String: Any]()
+		
+		nowPlayingInfo[MPMediaItemPropertyTitle] = episode.title
+		nowPlayingInfo[MPMediaItemPropertyArtist] = episode.author
+		
+		MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
 	}
 	
 	fileprivate func playEpisode() {
@@ -52,8 +81,25 @@ class PlayerDetailView: UIView {
 			
 			self?.durationLabel.text = durationTime?.toDisplayString()
 			
+			self?.setupLockscreenCurrentTime()
+			
 			self?.updateCurrentTimeSlider()
 		}
+	}
+	
+	fileprivate func setupLockscreenCurrentTime() {
+		var nowPlayingInfo = MPNowPlayingInfoCenter.default().nowPlayingInfo
+
+		// modifications
+		guard let currentItem = player.currentItem else { return }
+		let durationInSeconds = CMTimeGetSeconds(currentItem.duration)
+		
+		let elapsedTime = CMTimeGetSeconds(player.currentTime())
+		
+		nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = elapsedTime
+		nowPlayingInfo?[MPMediaItemPropertyPlaybackDuration] = durationInSeconds
+		
+		MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
 	}
 	
 	fileprivate func updateCurrentTimeSlider() {
