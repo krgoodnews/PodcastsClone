@@ -40,7 +40,7 @@ extension PlayerDetailView {
 			self.transform = .identity
 			
 			if translation.y < -200 || velocity.y < -500 {
-				UIApplication.mainTabBarController()?.maximizePlayerDetails(nil)
+				UIApplication.mainTabBarController()?.maximizePlayerDetails(episode: nil)
 			} else {
 				self.miniPlayerView.alpha = 1
 				self.maximizedStackView.alpha = 0

@@ -214,6 +214,58 @@ class PlayerDetailView: UIView {
 			return .success
 		}
 		
+		// next & previous track command
+		commandCenter.nextTrackCommand.addTarget(self, action: #selector(handleNextTrack))
+		commandCenter.previousTrackCommand.addTarget(self, action: #selector(handlePrevTrack))
+	}
+	
+	var playlistEpisodes = [Episode]()
+	
+	@objc fileprivate func handleNextTrack() {
+		
+		if playlistEpisodes.count == 0 {
+			return
+		}
+		
+		
+		let currentEpisodeIndex = playlistEpisodes.index { (ep) -> Bool in
+			return self.episode.title == ep.title && self.episode.author == ep.author
+		}
+		
+		guard let index = currentEpisodeIndex else { return }
+		
+		let nextEpisode: Episode
+		if index == playlistEpisodes.count - 1 {
+			nextEpisode = playlistEpisodes[0]
+		} else {
+			nextEpisode = playlistEpisodes[index + 1]
+		}
+		
+		
+		self.episode = nextEpisode
+	}
+	@objc fileprivate func handlePrevTrack() {
+		
+		if playlistEpisodes.count == 0 {
+			return
+		}
+		
+		
+		let currentEpisodeIndex = playlistEpisodes.index { (ep) -> Bool in
+			return self.episode.title == ep.title && self.episode.author == ep.author
+		}
+		
+		guard let index = currentEpisodeIndex else { return }
+		
+		let prevEpisode: Episode
+		if index == 0 {
+			prevEpisode = playlistEpisodes[playlistEpisodes.count - 1]
+		} else {
+			prevEpisode = playlistEpisodes[index - 1]
+		}
+		
+		
+		self.episode = prevEpisode
 	}
 	
 	fileprivate func setupElapsedTime() {
@@ -232,7 +284,7 @@ class PlayerDetailView: UIView {
 	
 	
 	@objc private func didTapMaximize() {
-		UIApplication.mainTabBarController()?.maximizePlayerDetails(nil)
+		UIApplication.mainTabBarController()?.maximizePlayerDetails(episode: nil)
 	}
 	
 	static func initFromNib() -> PlayerDetailView {
