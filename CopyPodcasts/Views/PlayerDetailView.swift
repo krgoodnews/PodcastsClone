@@ -20,6 +20,8 @@ class PlayerDetailView: UIView {
 			
 			setupNowPlayingInfo()
 			
+			setupAudioSession()
+			
 			playEpisode()
 			
 			let url = URL(string: episode.imageUrl?.toSecureHTTPS() ?? "")
@@ -164,15 +166,52 @@ class PlayerDetailView: UIView {
 		
 		// for Background Audio
 		setupRemoteControl()
-		setupAudioSession()
-		
-		
 		
 		setupGestures()
+		
+		setupInterruptionObserver()
 		
 		observePlayerCurrentTime()
 		
 		observeBoundaryTime()
+	}
+	
+	
+	// 전화가 오거나 기타 오디오가 중지되어야 할 다른 작업이 존재할 경우 실행되는 이벤트
+	fileprivate func setupInterruptionObserver() {
+		NotificationCenter.default.addObserver(self, selector: #selector(handleInterruption), name: .AVAudioSessionInterruption, object: nil)
+	}
+	
+	@objc fileprivate func handleInterruption(notification: Notification) {
+		print("Interruption observed")
+		
+		guard let userInfo = notification.userInfo else { return }
+		
+		guard let type = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt else { return }
+		
+		if type == AVAudioSessionInterruptionType.began.rawValue {
+			// 전화가 왔을 때
+			print("Interruption began")
+			playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+			miniPlayPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
+			
+		} else {
+			// 전화가 끊겼을 때
+			print("Interruption ended..")
+			
+			guard let options = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt else { return }
+			
+			
+			// 왜인지는 모르겠는데 조건문으로 걸러줘야 오류가 생기지 않음
+			if options == AVAudioSessionInterruptionOptions.shouldResume.rawValue {
+				player.play()
+				playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+				miniPlayPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+			}
+		}
+		
+//		AVAudioSessionInterruptionType
+		
 	}
 	
 	
@@ -189,7 +228,7 @@ class PlayerDetailView: UIView {
 			self.playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
 			self.miniPlayPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
 			
-			self.setupElapsedTime()
+			self.setupElapsedTime(playbackRate: 1)
 			
 			return .success
 		}
@@ -201,7 +240,8 @@ class PlayerDetailView: UIView {
 			self.playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
 			self.miniPlayPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
 			
-			self.setupElapsedTime()
+			self.setupElapsedTime(playbackRate: 0)
+			
 			
 			return .success
 		}
@@ -268,9 +308,13 @@ class PlayerDetailView: UIView {
 		self.episode = prevEpisode
 	}
 	
-	fileprivate func setupElapsedTime() {
+	fileprivate func setupElapsedTime(playbackRate: Float) {
 		let elapsedTime = CMTimeGetSeconds(player.currentTime())
 		MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = elapsedTime
+		
+		// 백그라운드 재생창 컨트롤시 시간 싱크를 위해 집어넣음
+		MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyPlaybackRate] = playbackRate
+
 	}
 	
 	fileprivate func setupAudioSession() {
@@ -404,11 +448,13 @@ class PlayerDetailView: UIView {
 			playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
 			miniPlayPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
 			enlargeEpisodeImageView()
+			self.setupElapsedTime(playbackRate: 1)
 		} else {
 			player.pause()
 			playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
 			miniPlayPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
 			shrinkEpisodeImageView()
+			self.setupElapsedTime(playbackRate: 0)
 		}
 	}
 }
