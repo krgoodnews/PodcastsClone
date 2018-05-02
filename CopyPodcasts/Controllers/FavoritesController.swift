@@ -19,8 +19,8 @@ class FavoritesController: UICollectionViewController, UICollectionViewDelegateF
 	}
 	
 	fileprivate func setupCollectionView() {
-		collectionView?.backgroundColor = .blue
-		collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
+		collectionView?.backgroundColor = .white
+		collectionView?.register(FavoritePodcastCell.self, forCellWithReuseIdentifier: cellID)
 	}
 	
 	// MARK: - UICollectionView Delegate
@@ -30,9 +30,8 @@ class FavoritesController: UICollectionViewController, UICollectionViewDelegateF
 	}
 	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! FavoritePodcastCell
 		
-		cell.backgroundColor = .red
 		
 		return cell
 	}
@@ -40,7 +39,7 @@ class FavoritesController: UICollectionViewController, UICollectionViewDelegateF
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		
 		let width = (view.frame.width - 3 * 16) / 2
-		return CGSize(width: width, height: 154)
+		return CGSize(width: width, height: width + 46)
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
