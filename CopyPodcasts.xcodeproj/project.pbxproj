@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF52F09520994CF800506E26 /* FavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F09420994CF800506E26 /* FavoritesController.swift */; };
 		EF52F25020450B1C00998D0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F24F20450B1C00998D0F /* AppDelegate.swift */; };
 		EF52F25220450B1C00998D0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F25120450B1C00998D0F /* ViewController.swift */; };
 		EF52F25520450B1C00998D0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF52F25320450B1C00998D0F /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EF52F09420994CF800506E26 /* FavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesController.swift; sourceTree = "<group>"; };
 		EF52F24C20450B1C00998D0F /* CopyPodcasts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CopyPodcasts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF52F24F20450B1C00998D0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EF52F25120450B1C00998D0F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			children = (
 				EF52F2642045219700998D0F /* PodcastsSearchController.swift */,
 				EF52F2AA2053F72500998D0F /* EpisodesController.swift */,
+				EF52F09420994CF800506E26 /* FavoritesController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				EFDFA5E02085E6B8002699B3 /* UIApplication.swift in Sources */,
 				EF52F2B82054C24600998D0F /* RSSFeed+.swift in Sources */,
 				EF52F2652045219700998D0F /* PodcastsSearchController.swift in Sources */,
+				EF52F09520994CF800506E26 /* FavoritesController.swift in Sources */,
 				EF75A6B2205A911700C8ED87 /* PlayerDetailView.swift in Sources */,
 				EF52F25220450B1C00998D0F /* ViewController.swift in Sources */,
 				EF52F25020450B1C00998D0F /* AppDelegate.swift in Sources */,
