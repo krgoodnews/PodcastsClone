@@ -30,7 +30,7 @@ class PodcastsSearchController: UITableViewController {
 		setupSearchBar()
 		setupTableView()
 		
-		searchBar(searchController.searchBar, textDidChange: "Voong") // for testing
+		searchBar(searchController.searchBar, textDidChange: "coding") // for testing
 	}
 	
 	// MARK: - Setup Work
