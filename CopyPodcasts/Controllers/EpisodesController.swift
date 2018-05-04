@@ -46,11 +46,22 @@ class EpisodesController: UITableViewController {
 	// MARK: - setup Work
 	
 	fileprivate func setupNavigationBarButtons() {
+		// let's check if we have already saved this podcast as fav
+		let savedPodcasts = UserDefaults.standard.savedPodcasts()
 		
-		navigationItem.rightBarButtonItems = [
-			UIBarButtonItem(title: "Favorite", style: .plain, target: self, action: #selector(handleSaveFavorite)),
-			UIBarButtonItem(title: "Fetch", style: .plain, target: self, action: #selector(handleFetchSavedPodcasts))
-		]
+		let hasFavorited = savedPodcasts.index(where: { $0.trackName == self.podcast?.trackName && $0.artistName == self.podcast?.artistName }) != nil
+		
+		if hasFavorited {
+			// setting up heart Icon
+			navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "heart"), style: .plain, target: nil, action: nil)
+		} else {
+			navigationItem.rightBarButtonItems = [
+				UIBarButtonItem(title: "Favorite", style: .plain, target: self, action: #selector(handleSaveFavorite)),
+//				UIBarButtonItem(title: "Fetch", style: .plain, target: self, action: #selector(handleFetchSavedPodcasts)
+			]
+		}
+		
+		
 	}
 	
 	@objc fileprivate func handleFetchSavedPodcasts() {
@@ -75,8 +86,16 @@ class EpisodesController: UITableViewController {
 		let data = NSKeyedArchiver.archivedData(withRootObject: listOfPodcasts)
 		
 		UserDefaults.standard.set(data, forKey: UserDefaults.favoritedPodcastKey)
+		
+		showBadgeHighlight()
+		
+		navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "heart"), style: .plain, target: nil, action: nil)
+		
 		print("Saving info into UserDefaults")
-
+	}
+	
+	fileprivate func showBadgeHighlight() {
+		UIApplication.mainTabBarController()?.viewControllers?[1].tabBarItem.badgeValue = "New"
 	}
 	
 	fileprivate func setupTableView() {

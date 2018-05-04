@@ -20,6 +20,14 @@ class FavoritesController: UICollectionViewController, UICollectionViewDelegateF
 		setupCollectionView()
 	}
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		podcasts = UserDefaults.standard.savedPodcasts()
+		collectionView?.reloadData()
+		UIApplication.mainTabBarController()?.viewControllers?[1].tabBarItem.badgeValue = nil
+	}
+	
 	fileprivate func setupCollectionView() {
 		collectionView?.backgroundColor = .white
 		collectionView?.register(FavoritePodcastCell.self, forCellWithReuseIdentifier: cellID)
@@ -41,9 +49,21 @@ class FavoritesController: UICollectionViewController, UICollectionViewDelegateF
 		let alert = UIAlertController(title: "Remove Podcast?", message: nil, preferredStyle: .actionSheet)
 		
 		let deleteAction = UIAlertAction(title: "Yes", style: .destructive) { (_) in
-			// where I remove the podcast object from collection view
+			
+			// delete podcast from UserDefaults
+			var savedPodcasts = UserDefaults.standard.savedPodcasts()
+//			listOfPodcasts.append(podcast)
+			savedPodcasts.remove(at: selectedIndexPath.item)
+			let data = NSKeyedArchiver.archivedData(withRootObject: savedPodcasts)
+			UserDefaults.standard.set(data, forKey: UserDefaults.favoritedPodcastKey)
+			
+			
+			// remove the podcast object from collection view
 			self.podcasts.remove(at: selectedIndexPath.item)
 			self.collectionView?.deleteItems(at: [selectedIndexPath])
+			
+			
+			
 		}
 		
 		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
@@ -76,8 +96,25 @@ class FavoritesController: UICollectionViewController, UICollectionViewDelegateF
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		
-		let width = (view.frame.width - 3 * 16) / 2
+		var width: CGFloat = 100
+		
+		switch UIDevice.current.userInterfaceIdiom {
+		case .pad:
+			width = 236
+		default:
+			width = (view.frame.width - 3 * 16) / 2
+		}
+		
 		return CGSize(width: width, height: width + 46)
+
+	}
+	
+	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		let episodesController = EpisodesController()
+		
+		episodesController.podcast = self.podcasts[indexPath.item]
+		
+		navigationController?.pushViewController(episodesController, animated: true)
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
