@@ -12,6 +12,8 @@ class FavoritesController: UICollectionViewController, UICollectionViewDelegateF
 	
 	fileprivate let cellID = "cellID"
 	
+	var podcasts = UserDefaults.standard.savedPodcasts()
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -21,17 +23,53 @@ class FavoritesController: UICollectionViewController, UICollectionViewDelegateF
 	fileprivate func setupCollectionView() {
 		collectionView?.backgroundColor = .white
 		collectionView?.register(FavoritePodcastCell.self, forCellWithReuseIdentifier: cellID)
+		
+		let gesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+		collectionView?.addGestureRecognizer(gesture)
 	}
 	
+	@objc private func handleLongPress(gesture: UILongPressGestureRecognizer) {
+		print("Captured Long Press")
+		
+		let location = gesture.location(in: collectionView)
+		
+		guard let selectedIndexPath = collectionView?.indexPathForItem(at: location) else { return }
+
+//		print(selectedIndexPath?.item)
+		
+		
+		let alert = UIAlertController(title: "Remove Podcast?", message: nil, preferredStyle: .actionSheet)
+		
+		let deleteAction = UIAlertAction(title: "Yes", style: .destructive) { (_) in
+			// where I remove the podcast object from collection view
+			self.podcasts.remove(at: selectedIndexPath.item)
+			self.collectionView?.deleteItems(at: [selectedIndexPath])
+		}
+		
+		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+		
+		alert.addAction(deleteAction)
+		alert.addAction(cancelAction)
+		
+		// for iPad
+		if let popover = alert.popoverPresentationController {
+			let selectedCell = collectionView?.cellForItem(at: selectedIndexPath ?? IndexPath(item: 0, section: 0))
+			popover.sourceView = selectedCell
+			popover.sourceRect = (selectedCell?.bounds)!
+		}
+		
+		present(alert, animated: true)
+	}
 	// MARK: - UICollectionView Delegate
 	
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 5
+		return podcasts.count
 	}
 	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! FavoritePodcastCell
 		
+		cell.podcast = self.podcasts[indexPath.item]
 		
 		return cell
 	}
