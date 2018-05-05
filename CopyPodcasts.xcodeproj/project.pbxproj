@@ -10,6 +10,8 @@
 		EF52F09520994CF800506E26 /* FavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F09420994CF800506E26 /* FavoritesController.swift */; };
 		EF52F097209971B500506E26 /* FavoritePodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F096209971B500506E26 /* FavoritePodcastCell.swift */; };
 		EF52F099209B7EDF00506E26 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F098209B7EDF00506E26 /* UserDefaults.swift */; };
+		EF52F09C209DF6EC00506E26 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF52F09A209DF6EC00506E26 /* SnapKit.framework */; };
+		EF52F09D209DF6EC00506E26 /* Then.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF52F09B209DF6EC00506E26 /* Then.framework */; };
 		EF52F25020450B1C00998D0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F24F20450B1C00998D0F /* AppDelegate.swift */; };
 		EF52F25220450B1C00998D0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F25120450B1C00998D0F /* ViewController.swift */; };
 		EF52F25520450B1C00998D0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF52F25320450B1C00998D0F /* Main.storyboard */; };
@@ -41,6 +43,8 @@
 		EF52F09420994CF800506E26 /* FavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesController.swift; sourceTree = "<group>"; };
 		EF52F096209971B500506E26 /* FavoritePodcastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePodcastCell.swift; sourceTree = "<group>"; };
 		EF52F098209B7EDF00506E26 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		EF52F09A209DF6EC00506E26 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		EF52F09B209DF6EC00506E26 /* Then.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Then.framework; path = Carthage/Build/iOS/Then.framework; sourceTree = "<group>"; };
 		EF52F24C20450B1C00998D0F /* CopyPodcasts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CopyPodcasts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF52F24F20450B1C00998D0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EF52F25120450B1C00998D0F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +79,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF52F09C209DF6EC00506E26 /* SnapKit.framework in Frameworks */,
+				EF52F09D209DF6EC00506E26 /* Then.framework in Frameworks */,
 				EF52F2AD20541C5100998D0F /* FeedKit.framework in Frameworks */,
 				EF52F27620455B9C00998D0F /* SDWebImage.framework in Frameworks */,
 				EF52F26B20452BD700998D0F /* Alamofire.framework in Frameworks */,
@@ -142,6 +148,8 @@
 		EF52F26920452BD700998D0F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EF52F09A209DF6EC00506E26 /* SnapKit.framework */,
+				EF52F09B209DF6EC00506E26 /* Then.framework */,
 				EF52F2AC20541C5100998D0F /* FeedKit.framework */,
 				EF52F27520455B9C00998D0F /* SDWebImage.framework */,
 				EF52F26A20452BD700998D0F /* Alamofire.framework */,
@@ -270,6 +278,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SDWebImage.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FeedKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Then.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 			);
 			outputPaths = (
 			);
