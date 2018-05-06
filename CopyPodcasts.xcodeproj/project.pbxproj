@@ -11,7 +11,6 @@
 		EF52F097209971B500506E26 /* FavoritePodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F096209971B500506E26 /* FavoritePodcastCell.swift */; };
 		EF52F099209B7EDF00506E26 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F098209B7EDF00506E26 /* UserDefaults.swift */; };
 		EF52F09C209DF6EC00506E26 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF52F09A209DF6EC00506E26 /* SnapKit.framework */; };
-		EF52F09D209DF6EC00506E26 /* Then.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF52F09B209DF6EC00506E26 /* Then.framework */; };
 		EF52F25020450B1C00998D0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F24F20450B1C00998D0F /* AppDelegate.swift */; };
 		EF52F25220450B1C00998D0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F25120450B1C00998D0F /* ViewController.swift */; };
 		EF52F25520450B1C00998D0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF52F25320450B1C00998D0F /* Main.storyboard */; };
@@ -80,7 +79,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF52F09C209DF6EC00506E26 /* SnapKit.framework in Frameworks */,
-				EF52F09D209DF6EC00506E26 /* Then.framework in Frameworks */,
 				EF52F2AD20541C5100998D0F /* FeedKit.framework in Frameworks */,
 				EF52F27620455B9C00998D0F /* SDWebImage.framework in Frameworks */,
 				EF52F26B20452BD700998D0F /* Alamofire.framework in Frameworks */,
@@ -220,7 +218,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = krgoodnews;
 				TargetAttributes = {
 					EF52F24B20450B1C00998D0F = {
@@ -278,7 +276,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SDWebImage.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FeedKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Then.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 			);
 			outputPaths = (
@@ -352,6 +349,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -359,6 +357,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -386,12 +385,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -409,6 +409,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -416,6 +417,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -437,10 +439,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

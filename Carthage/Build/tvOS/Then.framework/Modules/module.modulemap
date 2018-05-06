@@ -1,4 +1,0 @@
-framework module Then {
-    header "Then-Swift.h"
-    requires objc
-}
