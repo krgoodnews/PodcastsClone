@@ -51,12 +51,7 @@ class FavoritesController: UICollectionViewController, UICollectionViewDelegateF
 		let deleteAction = UIAlertAction(title: "Yes", style: .destructive) { (_) in
 			
 			// delete podcast from UserDefaults
-			var savedPodcasts = UserDefaults.standard.savedPodcasts()
-//			listOfPodcasts.append(podcast)
-			savedPodcasts.remove(at: selectedIndexPath.item)
-			let data = NSKeyedArchiver.archivedData(withRootObject: savedPodcasts)
-			UserDefaults.standard.set(data, forKey: UserDefaults.favoritedPodcastKey)
-			
+			UserDefaults.standard.deleteSavedPodcast(at: selectedIndexPath.item)
 			
 			// remove the podcast object from collection view
 			self.podcasts.remove(at: selectedIndexPath.item)

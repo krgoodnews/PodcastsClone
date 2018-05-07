@@ -20,10 +20,14 @@ class DownloadsController: UITableViewController {
 		setupTableView()
 	}
 	
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
+	fileprivate func refreshEpisodes() {
 		episodes = UserDefaults.standard.downloadedEpisodes()
 		tableView.reloadData()
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		refreshEpisodes()
 	}
 	
 	// MARK: - Setup
@@ -35,6 +39,16 @@ class DownloadsController: UITableViewController {
 	
 	
 	// MARK: - UITableView
+	
+	override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+		let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (_, _) in
+			UserDefaults.standard.deleteDownloadedEpisode(at: indexPath.row)
+			self.episodes = UserDefaults.standard.downloadedEpisodes()
+			self.tableView.deleteRows(at: [indexPath], with: .automatic)
+		}
+		
+		return [deleteAction]
+	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return episodes.count
