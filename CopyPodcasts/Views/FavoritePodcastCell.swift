@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class FavoritePodcastCell: UICollectionViewCell {
 	
@@ -40,14 +41,18 @@ class FavoritePodcastCell: UICollectionViewCell {
 		stackView.axis = .vertical
 		
 		// enable auto layout
-		stackView.translatesAutoresizingMaskIntoConstraints = false
 		addSubview(stackView)
 		
-		
-		stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-		stackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-		stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-		stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+//		
+//		stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+//		stackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+//		stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+//		stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+//		
+		stackView.snp.remakeConstraints { make -> Void in
+			make.edges.equalTo(self)
+		}
+
 	}
 	
 	override init(frame: CGRect) {
