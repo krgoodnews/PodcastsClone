@@ -111,6 +111,9 @@ class EpisodesController: UITableViewController {
 			print("Downloading episode into UserDefaults")
 			let episode = self.episodes[indexPath.row]
 			UserDefaults.standard.downloadEpisode(episode: episode)
+			
+			// download the podcast episode using Alamofire
+			APIService.shared.downloadEpisode(episode: episode)
 		}
 		
 		return [downloadAction]

@@ -17,6 +17,41 @@ class APIService {
 	// singleton
 	static let shared = APIService()
 	
+	
+	
+	func downloadEpisode(episode: Episode) {
+		print("Downloading episode using Alamofire at streamUrl:", episode.streamUrl)
+		
+		let downloadsRequest = DownloadRequest.suggestedDownloadDestination()
+		
+		Alamofire.download(episode.streamUrl, to: downloadsRequest).downloadProgress { (progress) in
+			print(progress.fractionCompleted)
+			}.response { (resp) in
+				print(resp.destinationURL?.absoluteString ?? "")
+				
+				// I want to update UserDefaults downloaded episodes with this temp file somehow
+				var downloadedEpisodes = UserDefaults.standard.downloadedEpisodes()
+				guard let index = downloadedEpisodes.index(where: { $0.title == episode.title && $0.author == episode.author }) else { return }
+				
+				downloadedEpisodes[index].fileUrl = resp.destinationURL?.absoluteString ?? ""
+				
+				do {
+					let data = try JSONEncoder().encode(downloadedEpisodes)
+					UserDefaults.standard.set(data, forKey: UserDefaults.downloadedEpisodesKey)
+
+				} catch let err {
+					print("Failed to encode downloaded episodes with file url update:", err)
+				}
+				
+		}
+		
+			
+		
+	}
+	
+	
+	
+	
 	func fetchEpisodes(feedUrl: String, completion: @escaping ([Episode]) -> ()) {
 		let secureFeedUrl = feedUrl.contains("https") ? feedUrl : feedUrl.replacingOccurrences(of: "http", with: "https")
 		

@@ -32,13 +32,22 @@ class DownloadsController: UITableViewController {
 	
 	// MARK: - Setup
 	
-	fileprivate func setupTableView() {
+	fileprivate func setupTableView()   {
 		let nib = UINib(nibName: "EpisodeCell", bundle: nil)
 		tableView.register(nib, forCellReuseIdentifier: cellID)
 	}
 	
 	
 	// MARK: - UITableView
+	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		print("Launch episode player")
+		let episode = self.episodes[indexPath.row]
+		
+		
+		
+		UIApplication.mainTabBarController()?.maximizePlayerDetails(episode: episode, playlistEpisodes: self.episodes)
+	}
 	
 	override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
 		let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (_, _) in
