@@ -25,7 +25,7 @@ extension PlayerDetailView {
 		self.transform = CGAffineTransform(translationX: 0, y: translation.y)
 		
 		self.miniPlayerView.alpha = 1 + translation.y / 200
-		self.maximizedStackView.alpha = -translation.y / 200
+		self.backgroundMaximizedStackView.alpha = -translation.y / 200
 		
 	}
 	
@@ -43,7 +43,7 @@ extension PlayerDetailView {
 				UIApplication.mainTabBarController()?.maximizePlayerDetails(episode: nil)
 			} else {
 				self.miniPlayerView.alpha = 1
-				self.maximizedStackView.alpha = 0
+				self.backgroundMaximizedStackView.alpha = 0
 			}
 			
 		})

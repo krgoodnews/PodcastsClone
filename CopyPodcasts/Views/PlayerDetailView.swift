@@ -141,7 +141,7 @@ class PlayerDetailView: UIView {
 		panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
 		miniPlayerView.addGestureRecognizer(panGesture)
 
-		maximizedStackView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleDismissalPan)))
+		backgroundMaximizedStackView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleDismissalPan)))
 	}
 	
 	@objc private func handleDismissalPan(gesture: UIPanGestureRecognizer) {
@@ -149,20 +149,19 @@ class PlayerDetailView: UIView {
 		
 		if gesture.state == .changed {
 			let translation = gesture.translation(in: superview)
-			maximizedStackView.transform = CGAffineTransform(translationX: 0, y: translation.y)
+			backgroundMaximizedStackView.transform = CGAffineTransform(translationX: 0, y: translation.y)
 		} else if gesture.state == .ended {
 
 			let translation = gesture.translation(in: superview)
 			let velocity = gesture.velocity(in: superview)
 			UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-				self.maximizedStackView.transform = .identity
+				self.backgroundMaximizedStackView.transform = .identity
 				
 				if translation.y > 200 || velocity.y >  500 {
 					UIApplication.mainTabBarController()?.minimizePlayerDetails()
 				}
 			})
 		}
-		
 	}
 	fileprivate func observeBoundaryTime() {
 		let time = CMTimeMake(1, 3)
@@ -185,7 +184,6 @@ class PlayerDetailView: UIView {
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()
-		
 		
 		// for Background Audio
 		setupRemoteControl()
@@ -379,6 +377,7 @@ class PlayerDetailView: UIView {
 	@IBOutlet weak var miniPlayerView: UIView!
 	@IBOutlet weak var maximizedStackView: UIStackView!
 	
+	@IBOutlet weak var backgroundMaximizedStackView: UIView!
 	
 	@IBOutlet weak var currentTimeSlider: UISlider!
 	@IBOutlet weak var currentTimeLabel: UILabel!
