@@ -185,6 +185,8 @@ class PlayerDetailView: UIView {
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		
+		setupUI()
+		
 		// for Background Audio
 		setupRemoteControl()
 		
@@ -195,6 +197,10 @@ class PlayerDetailView: UIView {
 		observePlayerCurrentTime()
 		
 		observeBoundaryTime()
+	}
+	
+	fileprivate func setupUI() {
+		
 	}
 	
 	
@@ -462,7 +468,7 @@ class PlayerDetailView: UIView {
 			playPauseButton.addTarget(self, action: #selector(didTapPlayPause), for: .touchUpInside)
 		}
 	}
-	
+
 	@objc func didTapPlayPause() {
 		print("Trying to play and pause")
 		if player.timeControlStatus == .paused {
