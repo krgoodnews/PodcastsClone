@@ -68,7 +68,7 @@ class FavoritesController: UICollectionViewController, UICollectionViewDelegateF
 		
 		// for iPad
 		if let popover = alert.popoverPresentationController {
-			let selectedCell = collectionView?.cellForItem(at: selectedIndexPath ?? IndexPath(item: 0, section: 0))
+			let selectedCell = collectionView?.cellForItem(at: selectedIndexPath)
 			popover.sourceView = selectedCell
 			popover.sourceRect = (selectedCell?.bounds)!
 		}
