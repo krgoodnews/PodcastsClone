@@ -84,7 +84,11 @@ class MainTabBarController: UITabBarController {
 
 		
 		minimizedTopAnchorConstraint = playerDetailsView.topAnchor.constraint(equalTo: tabBar.topAnchor, constant: -64)
-
+		
+//		minimizedTopAnchorConstraint.isActive = true
+		
+//		playerDetailsView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+//		playerDetailsView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
 		playerDetailsView.snp.remakeConstraints { make -> Void in
 			make.leading.trailing.equalTo(self.view)
 		}
