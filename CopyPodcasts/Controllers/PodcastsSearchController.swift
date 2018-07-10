@@ -7,30 +7,42 @@
 //
 
 import UIKit
-import Alamofire
 
 class PodcastsSearchController: UITableViewController {
 	
-	var timer: Timer?
 	
-	var podcasts: [Podcast] = [] {
-		didSet {
-			self.tableView.reloadData()
-		}
-	}
+	private let cellID = "podcastCellID"
 	
-	let cellID = "podcastCellID"
+	//TODO: private var apiService: APIService = APIService()
+	private var apiService: APIService!
+	private var podcastListViewModel :PodcastListViewModel!
+	private var dataSource: TableViewDataSource<PodcastCell, PodcastViewModel>!
+	
+
 	
 	// lets implement a UISearchController
 	let searchController = UISearchController(searchResultsController: nil)
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+	
+		setupVM()
 		setupSearchBar()
 		setupTableView()
 		
-		searchBar(searchController.searchBar, textDidChange: "coding") // for testing
+//		searchBar(searchController.searchBar, textDidChange: "coding") // for testing
+	}
+	
+	func setupVM() {
+		self.apiService = APIService()
+		self.podcastListViewModel = PodcastListViewModel(apiService: apiService, didSearch: {
+			self.dataSource = TableViewDataSource(cellID: self.cellID, items: self.podcastListViewModel.podcastViewModels) { (cell, vm) in
+				cell.podcastViewModel = vm
+			}
+			
+			self.tableView.dataSource = self.dataSource
+			self.tableView.reloadData()
+		})
 	}
 	
 	// MARK: - Setup Work
@@ -51,29 +63,14 @@ class PodcastsSearchController: UITableViewController {
 	}
 	
 	// MARK: - TableView
-	
-	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let selectedPodcast = podcasts[indexPath.row]
-		
-		let destVC = EpisodesController()
-		destVC.podcast = selectedPodcast
-		navigationController?.pushViewController(destVC, animated: true)
-	}
-	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return podcasts.count
-	}
-	
+
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! PodcastCell
 		
-		let podcast = self.podcasts[indexPath.row]
-		
-		cell.podcast = podcast
-		
-//		cell.textLabel?.text = "\(podcast.trackName ?? "-")\n\(podcast.artistName ?? "-")"
-//		cell.textLabel?.numberOfLines = -1
-//		cell.imageView?.image = #imageLiteral(resourceName: "appicon")
-		
+//		let podcastViewModel = self.podcastViewModels[indexPath.row]
+
+//		cell.podcastViewModel = podcastViewModel
+
 		return cell
 	}
 	
@@ -95,20 +92,17 @@ class PodcastsSearchController: UITableViewController {
 	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		
 		// terary operator
-		return self.podcasts.count > 0 ? 0 : 250
+		return self.podcastListViewModel.isEmpty ? 250 : 0
 	}
+	
+	
 }
 
 extension PodcastsSearchController: UISearchBarDelegate {
 	
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-		
-		timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (timer) in
-			APIService.shared.fetchPodcasts(searchText: searchText) { (podcasts) in
-				self.podcasts = podcasts
-			}
-		})
-		
+
+		podcastListViewModel.searchPodcasts(searchText: searchText)
 	}
 	
 }

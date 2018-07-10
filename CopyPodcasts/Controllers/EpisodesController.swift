@@ -11,15 +11,23 @@ import FeedKit
 
 class EpisodesController: UITableViewController {
 	
-	var podcast: Podcast? {
+//	var podcast: Podcast? {
+//		didSet {
+//			navigationItem.title = podcast?.trackName
+//
+//			fetchEpisodes()
+//		}
+//	}
+	
+	var podcastViewModel: PodcastViewModel? {
 		didSet {
-			navigationItem.title = podcast?.trackName
-			
+			navigationItem.title = podcastViewModel?.title
 			fetchEpisodes()
 		}
 	}
 	
 	fileprivate func fetchEpisodes() {
+		let podcast = podcastViewModel?.podcast
 		print("Looking for episodes at feed url:", podcast?.feedUrl ?? "")
 		
 		guard let feedUrl = podcast?.feedUrl else { return }
@@ -47,9 +55,9 @@ class EpisodesController: UITableViewController {
 	
 	fileprivate func setupNavigationBarButtons() {
 		// let's check if we have already saved this podcast as fav
-		let savedPodcasts = UserDefaults.standard.savedPodcasts()
+		let savedPodcasts = UserDefaults.standard.savedPodcastViewModels()
 		
-		let hasFavorited = savedPodcasts.index(where: { $0.trackName == self.podcast?.trackName && $0.artistName == self.podcast?.artistName }) != nil
+		let hasFavorited = savedPodcasts.index(where: { $0.title == self.podcastViewModel?.title && $0.artist == self.podcastViewModel?.artist }) != nil
 		
 		if hasFavorited {
 			// setting up heart Icon
@@ -68,19 +76,19 @@ class EpisodesController: UITableViewController {
 		print("Fetching saved Podcasts from UserDefaults")
 		
 		// how to retrieve our Podcast object from UserDefaults
-		let savedPodcasts = UserDefaults.standard.savedPodcasts()
+		let savedPodcasts = UserDefaults.standard.savedPodcastViewModels()
 		
 		savedPodcasts.forEach({ (p) in
-			print(p.trackName ?? "")
+			print(p.title ?? "")
 		})
 	}
 	
 	@objc fileprivate func handleSaveFavorite() {
 		
-		guard let podcast = self.podcast else { return }
+		guard let podcast = self.podcastViewModel else { return }
 		
 		// 1. Transform podcast into data
-		var listOfPodcasts = UserDefaults.standard.savedPodcasts()
+		var listOfPodcasts = UserDefaults.standard.savedPodcastViewModels()
 		listOfPodcasts.append(podcast)
 		
 		let data = NSKeyedArchiver.archivedData(withRootObject: listOfPodcasts)

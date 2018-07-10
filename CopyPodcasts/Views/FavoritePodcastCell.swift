@@ -11,12 +11,22 @@ import SnapKit
 
 class FavoritePodcastCell: UICollectionViewCell {
 	
-	var podcast: Podcast! {
+//	var podcast: Podcast! {
+//		didSet {
+//			nameLabel.text = podcast.trackName
+//			artistNameLabel.text = podcast.artistName
+//
+//			let url = URL(string: podcast.artworkUrl600 ?? "")
+//			imageView.sd_setImage(with: url)
+//		}
+//	}
+	
+	var podcastViewModel: PodcastViewModel? {
 		didSet {
-			nameLabel.text = podcast.trackName
-			artistNameLabel.text = podcast.artistName
+			nameLabel.text = podcastViewModel?.title
+			artistNameLabel.text = podcastViewModel?.artist
 			
-			let url = URL(string: podcast.artworkUrl600 ?? "")
+			let url = URL(string: podcastViewModel?.podcast.artworkUrl600 ?? "")
 			imageView.sd_setImage(with: url)
 		}
 	}
@@ -43,12 +53,6 @@ class FavoritePodcastCell: UICollectionViewCell {
 		// enable auto layout
 		addSubview(stackView)
 		
-//		
-//		stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-//		stackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-//		stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-//		stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-//		
 		stackView.snp.remakeConstraints { make -> Void in
 			make.edges.equalTo(self)
 		}

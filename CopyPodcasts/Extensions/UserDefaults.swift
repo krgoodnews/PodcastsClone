@@ -58,21 +58,22 @@ extension UserDefaults {
 	
 	// MARK: - Favorite podcasts
 	
-	func savedPodcasts() -> [Podcast] {
+	func savedPodcastViewModels() -> [PodcastViewModel] {
 		
-		guard let savedPodcastsData = UserDefaults.standard.data(forKey: UserDefaults.favoritedPodcastKey) else { return [] }
+		guard let savedPodcastVMsData = UserDefaults.standard.data(forKey: UserDefaults.favoritedPodcastKey) else { return [] }
 		
-		let savedPodcasts = NSKeyedUnarchiver.unarchiveObject(with: savedPodcastsData) as? [Podcast] ?? [Podcast]()
+		let savedPodcastViewModels = NSKeyedUnarchiver.unarchiveObject(with: savedPodcastVMsData) as? [PodcastViewModel]
+			?? [PodcastViewModel]()
 		
-		return savedPodcasts
+		return savedPodcastViewModels
 	}
 	
 	func deleteSavedPodcast(at index: Int) {
 		// delete podcast from UserDefaults
-		var savedPodcasts = UserDefaults.standard.savedPodcasts()
+		var savedPodcastViewModels = UserDefaults.standard.savedPodcastViewModels()
 		
-		savedPodcasts.remove(at: index)
-		let data = NSKeyedArchiver.archivedData(withRootObject: savedPodcasts)
+		savedPodcastViewModels.remove(at: index)
+		let data = NSKeyedArchiver.archivedData(withRootObject: savedPodcastViewModels)
 		UserDefaults.standard.set(data, forKey: UserDefaults.favoritedPodcastKey)
 		
 	}

@@ -34,6 +34,8 @@
 		EF75A6B0205A8EF100C8ED87 /* PlayerDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF75A6AF205A8EF100C8ED87 /* PlayerDetailView.xib */; };
 		EF75A6B2205A911700C8ED87 /* PlayerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF75A6B1205A911700C8ED87 /* PlayerDetailView.swift */; };
 		EF7972AB20A03472005F3C5C /* DownloadsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7972AA20A03472005F3C5C /* DownloadsController.swift */; };
+		EF7D773C20F4E45700CD07D3 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7D773B20F4E45700CD07D3 /* TableViewDataSource.swift */; };
+		EF9B34CE20EE6A1300E37750 /* PodcastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9B34CD20EE6A1300E37750 /* PodcastViewModel.swift */; };
 		EFD6D578206BD69F00A77578 /* CMTime+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD6D577206BD69F00A77578 /* CMTime+.swift */; };
 		EFDFA5DE2085D63C002699B3 /* PlayerDetailsView+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDFA5DD2085D63C002699B3 /* PlayerDetailsView+Gestures.swift */; };
 		EFDFA5E02085E6B8002699B3 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDFA5DF2085E6B8002699B3 /* UIApplication.swift */; };
@@ -70,6 +72,8 @@
 		EF75A6AF205A8EF100C8ED87 /* PlayerDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerDetailView.xib; sourceTree = "<group>"; };
 		EF75A6B1205A911700C8ED87 /* PlayerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailView.swift; sourceTree = "<group>"; };
 		EF7972AA20A03472005F3C5C /* DownloadsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsController.swift; sourceTree = "<group>"; };
+		EF7D773B20F4E45700CD07D3 /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
+		EF9B34CD20EE6A1300E37750 /* PodcastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastViewModel.swift; sourceTree = "<group>"; };
 		EFD6D577206BD69F00A77578 /* CMTime+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime+.swift"; sourceTree = "<group>"; };
 		EFDFA5DD2085D63C002699B3 /* PlayerDetailsView+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerDetailsView+Gestures.swift"; sourceTree = "<group>"; };
 		EFDFA5DF2085E6B8002699B3 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
@@ -110,6 +114,8 @@
 		EF52F24E20450B1C00998D0F /* CopyPodcasts */ = {
 			isa = PBXGroup;
 			children = (
+				EF7D773A20F4E44A00CD07D3 /* Data Sources */,
+				EF9B34CC20EE6A0200E37750 /* ViewModel */,
 				EF52F2B42054C0E700998D0F /* Extensions */,
 				EF52F270204549E900998D0F /* Views */,
 				EF52F26D204543CB00998D0F /* API */,
@@ -191,6 +197,22 @@
 				EF52F098209B7EDF00506E26 /* UserDefaults.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EF7D773A20F4E44A00CD07D3 /* Data Sources */ = {
+			isa = PBXGroup;
+			children = (
+				EF7D773B20F4E45700CD07D3 /* TableViewDataSource.swift */,
+			);
+			path = "Data Sources";
+			sourceTree = "<group>";
+		};
+		EF9B34CC20EE6A0200E37750 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EF9B34CD20EE6A1300E37750 /* PodcastViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,7 +328,9 @@
 				EF52F26220450DD200998D0F /* MainTabBarController.swift in Sources */,
 				EFDFA5DE2085D63C002699B3 /* PlayerDetailsView+Gestures.swift in Sources */,
 				EF52F2B220549E4100998D0F /* EpisodeCell.swift in Sources */,
+				EF7D773C20F4E45700CD07D3 /* TableViewDataSource.swift in Sources */,
 				EF52F26F204543DD00998D0F /* APIService.swift in Sources */,
+				EF9B34CE20EE6A1300E37750 /* PodcastViewModel.swift in Sources */,
 				EF52F099209B7EDF00506E26 /* UserDefaults.swift in Sources */,
 				EF52F2B62054C0F300998D0F /* String+.swift in Sources */,
 				EF7972AB20A03472005F3C5C /* DownloadsController.swift in Sources */,
