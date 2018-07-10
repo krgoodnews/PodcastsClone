@@ -81,7 +81,7 @@ class APIService {
 			let parser = FeedParser(URL: url)
 			print("After parser")
 			
-			parser?.parseAsync(result: { (result) in
+			parser.parseAsync(result: { (result) in
 				print("Successfully parse feed:", result.isSuccess)
 				
 				if let err = result.error {
