@@ -95,7 +95,7 @@ class PlayerDetailView: UIView {
 
     // 현재 시간 표시하기
     fileprivate func observePlayerCurrentTime() {
-        let interval = CMTimeMake(1, 2)
+        let interval = CMTimeMake(value: 1, timescale: 2)
         player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] (time) in
 
             self?.currentTimeLabel.text = time.toDisplayString()
@@ -126,7 +126,7 @@ class PlayerDetailView: UIView {
 
     fileprivate func updateCurrentTimeSlider() {
         let currentTimeSeconds = CMTimeGetSeconds(player.currentTime())
-        let durationSeconds = CMTimeGetSeconds(player.currentItem?.duration ?? CMTimeMake(1, 1))
+        let durationSeconds = CMTimeGetSeconds(player.currentItem?.duration ?? CMTimeMake(value: 1, timescale: 1))
         let percentage = currentTimeSeconds / durationSeconds
 
         self.currentTimeSlider.value = Float(percentage)
@@ -162,7 +162,7 @@ class PlayerDetailView: UIView {
         }
     }
     fileprivate func observeBoundaryTime() {
-        let time = CMTimeMake(1, 3)
+        let time = CMTimeMake(value: 1, timescale: 3)
         let times = [NSValue(time: time)]
 
         // player has a reference to self
@@ -204,7 +204,7 @@ class PlayerDetailView: UIView {
 
     // 전화가 오거나 기타 오디오가 중지되어야 할 다른 작업이 존재할 경우 실행되는 이벤트
     fileprivate func setupInterruptionObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(handleInterruption), name: .AVAudioSessionInterruption, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleInterruption), name: AVAudioSession.interruptionNotification, object: nil)
     }
 
     @objc fileprivate func handleInterruption(notification: Notification) {
@@ -214,7 +214,7 @@ class PlayerDetailView: UIView {
 
         guard let type = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt else { return }
 
-        if type == AVAudioSessionInterruptionType.began.rawValue {
+        if type == AVAudioSession.InterruptionType.began.rawValue {
             // 전화가 왔을 때
             print("Interruption began")
             playPauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
@@ -227,7 +227,7 @@ class PlayerDetailView: UIView {
             guard let options = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt else { return }
 
             // 왜인지는 모르겠는데 조건문으로 걸러줘야 오류가 생기지 않음
-            if options == AVAudioSessionInterruptionOptions.shouldResume.rawValue {
+            if options == AVAudioSession.InterruptionOptions.shouldResume.rawValue {
                 player.play()
                 playPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
                 miniPlayPauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
@@ -277,17 +277,17 @@ class PlayerDetailView: UIView {
 
     var playlistEpisodes = [Episode]()
 
-    @objc fileprivate func handleNextTrack() {
+    @objc fileprivate func handleNextTrack() -> MPRemoteCommandHandlerStatus {
 
         if playlistEpisodes.count == 0 {
-            return
+            return .noSuchContent
         }
 
-        let currentEpisodeIndex = playlistEpisodes.index { (ep) -> Bool in
+        let currentEpisodeIndex = playlistEpisodes.firstIndex { (ep) -> Bool in
             return self.episode.title == ep.title && self.episode.author == ep.author
         }
 
-        guard let index = currentEpisodeIndex else { return }
+        guard let index = currentEpisodeIndex else { return .noSuchContent }
 
         let nextEpisode: Episode
         if index == playlistEpisodes.count - 1 {
@@ -296,21 +296,22 @@ class PlayerDetailView: UIView {
             nextEpisode = playlistEpisodes[index + 1]
         }
 
-
         self.episode = nextEpisode
+
+        return .success
     }
-    @objc fileprivate func handlePrevTrack() {
+    
+    @objc fileprivate func handlePrevTrack() -> MPRemoteCommandHandlerStatus {
 
         if playlistEpisodes.count == 0 {
-            return
+            return .noSuchContent
         }
 
-
-        let currentEpisodeIndex = playlistEpisodes.index { (ep) -> Bool in
+        let currentEpisodeIndex = playlistEpisodes.firstIndex { (ep) -> Bool in
             return self.episode.title == ep.title && self.episode.author == ep.author
         }
 
-        guard let index = currentEpisodeIndex else { return }
+        guard let index = currentEpisodeIndex else { return .noSuchContent }
 
         let prevEpisode: Episode
         if index == 0 {
@@ -319,8 +320,9 @@ class PlayerDetailView: UIView {
             prevEpisode = playlistEpisodes[index - 1]
         }
 
-
         self.episode = prevEpisode
+
+        return .success
     }
 
     fileprivate func setupElapsedTime(playbackRate: Float) {
@@ -334,7 +336,7 @@ class PlayerDetailView: UIView {
 
     fileprivate func setupAudioSession() {
         do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category(rawValue: convertFromAVAudioSessionCategory(AVAudioSession.Category.playback)))
             try AVAudioSession.sharedInstance().setActive(true)
         } catch let sessionErr {
             print("Failed to activate session:", sessionErr)
@@ -394,7 +396,7 @@ class PlayerDetailView: UIView {
         let durationInSeconds = CMTimeGetSeconds(duration)
         let seekTimeInSeconds = percentage * durationInSeconds
 
-        let seekTime = CMTimeMakeWithSeconds(seekTimeInSeconds, 1)
+        let seekTime = CMTimeMakeWithSeconds(seekTimeInSeconds, preferredTimescale: 1)
 
         // setup Lockscreen info
         MPNowPlayingInfoCenter.default().nowPlayingInfo?[MPNowPlayingInfoPropertyElapsedPlaybackTime] = seekTimeInSeconds
@@ -412,7 +414,7 @@ class PlayerDetailView: UIView {
 
     // delta초만큼 이동
     fileprivate func seekToCurrentTime(_ delta: Int64) {
-        let fifteenSeconds = CMTimeMake(delta, 1)
+        let fifteenSeconds = CMTimeMake(value: delta, timescale: 1)
         let seekTime = CMTimeAdd(player.currentTime(), fifteenSeconds)
         player.seek(to: seekTime)
     }
@@ -472,4 +474,9 @@ class PlayerDetailView: UIView {
             self.setupElapsedTime(playbackRate: 0)
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
+	return input.rawValue
 }

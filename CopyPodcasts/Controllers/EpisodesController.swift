@@ -57,7 +57,7 @@ class EpisodesController: UITableViewController {
 		// let's check if we have already saved this podcast as fav
 		let savedPodcasts = UserDefaults.standard.savedPodcastViewModels()
 		
-		let hasFavorited = savedPodcasts.index(where: { $0.title == self.podcastViewModel?.title && $0.artist == self.podcastViewModel?.artist }) != nil
+		let hasFavorited = savedPodcasts.firstIndex(where: { $0.title == self.podcastViewModel?.title && $0.artist == self.podcastViewModel?.artist }) != nil
 		
 		if hasFavorited {
 			// setting up heart Icon
@@ -152,7 +152,7 @@ class EpisodesController: UITableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-		let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+		let activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
 		activityIndicatorView.color = .darkGray
 		activityIndicatorView.startAnimating()
 		return activityIndicatorView

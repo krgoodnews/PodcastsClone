@@ -100,6 +100,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E67E997F244AC31A00953DAE /* PodCastsSearch */ = {
+			isa = PBXGroup;
+			children = (
+				EF52F2642045219700998D0F /* PodcastsSearchController.swift */,
+			);
+			path = PodCastsSearch;
+			sourceTree = "<group>";
+		};
 		EF52F24320450B1C00998D0F = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +129,7 @@
 		EF52F24E20450B1C00998D0F /* CopyPodcasts */ = {
 			isa = PBXGroup;
 			children = (
+				E67E997F244AC31A00953DAE /* PodCastsSearch */,
 				EF7D773A20F4E44A00CD07D3 /* Data Sources */,
 				EF9B34CC20EE6A0200E37750 /* ViewModel */,
 				EF52F2B42054C0E700998D0F /* Extensions */,
@@ -142,7 +151,6 @@
 		EF52F2632045218000998D0F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				EF52F2642045219700998D0F /* PodcastsSearchController.swift */,
 				EF52F2AA2053F72500998D0F /* EpisodesController.swift */,
 				EF52F09420994CF800506E26 /* FavoritesController.swift */,
 				EF7972AA20A03472005F3C5C /* DownloadsController.swift */,
@@ -257,6 +265,7 @@
 				TargetAttributes = {
 					EF52F24B20450B1C00998D0F = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1140;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -530,7 +539,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.krgoodnews.CopyPodcasts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -551,7 +560,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.krgoodnews.CopyPodcasts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

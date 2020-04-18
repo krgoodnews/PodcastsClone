@@ -10,15 +10,12 @@ import UIKit
 
 class PodcastsSearchController: UITableViewController {
 	
-	
 	private let cellID = "podcastCellID"
 	
 	//TODO: private var apiService: APIService = APIService()
 	private var apiService: APIService!
 	private var podcastListViewModel :PodcastListViewModel!
 	private var dataSource: TableViewDataSource<PodcastCell, PodcastViewModel>!
-	
-
 	
 	// lets implement a UISearchController
 	let searchController = UISearchController(searchResultsController: nil)
@@ -77,9 +74,8 @@ class PodcastsSearchController: UITableViewController {
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return 132
 	}
-	
-	
-	// header & footer
+
+	// MARK: header & footer
 	
 	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		let label = UILabel()

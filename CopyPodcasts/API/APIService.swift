@@ -50,7 +50,7 @@ class APIService {
 				
 				// I want to update UserDefaults downloaded episodes with this temp file somehow
 				var downloadedEpisodes = UserDefaults.standard.downloadedEpisodes()
-				guard let index = downloadedEpisodes.index(where: { $0.title == episode.title && $0.author == episode.author }) else { return }
+				guard let index = downloadedEpisodes.firstIndex(where: { $0.title == episode.title && $0.author == episode.author }) else { return }
 				
 				downloadedEpisodes[index].fileUrl = resp.destinationURL?.absoluteString ?? ""
 				
