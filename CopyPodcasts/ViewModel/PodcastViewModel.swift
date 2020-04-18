@@ -58,7 +58,8 @@ struct PodcastViewModel {
 		self.artworkUrl = URL(string: podcast.artworkUrl600 ?? "")
 		
 		let count = podcast.trackCount ?? 0
-		self.episodeString = count > 1 ?
-			"\(count) Episodes" : "\(count) Episode"
+		self.episodeString = count > 1
+            ? "\(count) Episodes"
+            : "\(count) Episode"
 	}
 }

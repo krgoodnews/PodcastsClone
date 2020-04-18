@@ -11,14 +11,6 @@ import FeedKit
 
 class EpisodesController: UITableViewController {
 	
-//	var podcast: Podcast? {
-//		didSet {
-//			navigationItem.title = podcast?.trackName
-//
-//			fetchEpisodes()
-//		}
-//	}
-	
 	var podcastViewModel: PodcastViewModel? {
 		didSet {
 			navigationItem.title = podcastViewModel?.title
