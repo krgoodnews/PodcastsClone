@@ -14,7 +14,7 @@ class PodcastsSearchController: UITableViewController {
 
     //TODO: private var apiService: APIService = APIService()
     private var apiService: APIService!
-    private var podcastListViewModel :PodcastListViewModel!
+    private var podcastListViewModel: PodcastListViewModel!
     private var dataSource: TableViewDataSource<PodcastCell, PodcastViewModel>!
 
     // lets implement a UISearchController
@@ -31,8 +31,8 @@ class PodcastsSearchController: UITableViewController {
     }
 
     func setupVM() {
-        self.apiService = APIService()
-        self.podcastListViewModel = PodcastListViewModel(apiService: apiService, didSearch: {
+        apiService = APIService()
+        podcastListViewModel = PodcastListViewModel(apiService: apiService, didSearch: {
             self.dataSource = TableViewDataSource(cellID: cellID, items: self.podcastListViewModel.podcastViewModels) { (cell, vm) in
                 cell.podcastViewModel = vm
             }
@@ -45,7 +45,7 @@ class PodcastsSearchController: UITableViewController {
     // MARK: - Setup Work
 
     fileprivate func setupSearchBar() {
-        self.definesPresentationContext = true
+        definesPresentationContext = true
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.dimsBackgroundDuringPresentation = false
@@ -53,7 +53,6 @@ class PodcastsSearchController: UITableViewController {
     }
 
     fileprivate func setupTableView() {
-
         tableView.tableFooterView = UIView()
         let nib = UINib(nibName: "PodcastCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: cellID)

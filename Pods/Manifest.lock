@@ -1,39 +1,48 @@
 PODS:
-  - Alamofire (4.7.3)
+  - Alamofire (5.1.0)
   - FeedKit (8.0.0)
-  - RxCocoa (4.2.0):
-    - RxSwift (~> 4.0)
-  - RxSwift (4.2.0)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
   - SDWebImage (4.4.1):
     - SDWebImage/Core (= 4.4.1)
   - SDWebImage/Core (4.4.1)
-  - SnapKit (4.0.0)
+  - SnapKit (5.0.1)
+  - Then (2.6.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.7)
+  - Alamofire (~> 5.1)
   - FeedKit (~> 8.0)
-  - RxCocoa (~> 4.0)
-  - RxSwift (~> 4.0)
+  - RxCocoa (~> 5)
+  - RxSwift (~> 5)
   - SDWebImage (~> 4.0)
-  - SnapKit (~> 4.0.0)
+  - SnapKit (~> 5.0.0)
+  - Then
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - FeedKit
     - RxCocoa
+    - RxRelay
     - RxSwift
     - SDWebImage
     - SnapKit
+    - Then
 
 SPEC CHECKSUMS:
-  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
   FeedKit: 4a78f07adf7f0a224b904014678f1de82a7ffc21
-  RxCocoa: 0b54909c902e1e581212a03e690bbd94032d8baa
-  RxSwift: 99e10317ddfcc7fbe01356aafd118fde4a0be104
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SDWebImage: 47e9b5b925cbce75946c23f0c42dd19464189af4
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  Then: 90cd104fd951cec1980a03f57704ad8f784d4d79
 
-PODFILE CHECKSUM: 536fa95d1395e8131042363986fb8973d6b134da
+PODFILE CHECKSUM: 2a565c2fc41165a0913e458a965a6c9b82a6d8ea
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.9.1

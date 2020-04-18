@@ -33,8 +33,8 @@ class APIService {
 		
 		let downloadsRequest = DownloadRequest.suggestedDownloadDestination()
 		
-		Alamofire.download(episode.streamUrl, to: downloadsRequest).downloadProgress { (progress) in
-			
+		AF.download(episode.streamUrl, to: downloadsRequest).downloadProgress { (progress) in
+//            AF.download(<#T##convertible: URLRequestConvertible##URLRequestConvertible#>, interceptor: <#T##RequestInterceptor?#>, to: <#T##DownloadRequest.Destination?##DownloadRequest.Destination?##(URL, HTTPURLResponse) -> (destinationURL: URL, options: DownloadRequest.Options)#>)
 			print(progress.fractionCompleted)
 			
 			// I want to notify DownloadsController about my download progress somehow?
@@ -42,9 +42,9 @@ class APIService {
 			NotificationCenter.default.post(name: .downloadProgress, object: nil, userInfo: ["title": episode.title, "progress": progress.fractionCompleted])
 			
 			}.response { (resp) in
-				print(resp.destinationURL?.absoluteString ?? "")
+				print(resp.fileURL?.absoluteString ?? "")
 				
-				let episodeDownloadComplete = EpisodeDownloadCompleteTuple(resp.destinationURL?.absoluteString ?? "", episode.title)
+				let episodeDownloadComplete = EpisodeDownloadCompleteTuple(resp.fileURL?.absoluteString ?? "", episode.title)
 				
 				NotificationCenter.default.post(name: .downloadComplete, object: episodeDownloadComplete, userInfo: nil)
 				
@@ -52,7 +52,7 @@ class APIService {
 				var downloadedEpisodes = UserDefaults.standard.downloadedEpisodes()
 				guard let index = downloadedEpisodes.firstIndex(where: { $0.title == episode.title && $0.author == episode.author }) else { return }
 				
-				downloadedEpisodes[index].fileUrl = resp.destinationURL?.absoluteString ?? ""
+				downloadedEpisodes[index].fileUrl = resp.fileURL?.absoluteString ?? ""
 				
 				do {
 					let data = try JSONEncoder().encode(downloadedEpisodes)
@@ -108,7 +108,7 @@ class APIService {
 			"media": "podcast"
 		]
 		
-		Alamofire.request(baseiTunesSearchURL, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseData { (dataResponse) in
+		AF.request(baseiTunesSearchURL, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseData { (dataResponse) in
 			if let err = dataResponse.error {
 				print("Failed to contact yahoo", err)
 				return

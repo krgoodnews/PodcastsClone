@@ -13,10 +13,6 @@ extension UserDefaults {
 	static let favoritedPodcastKey = "favoritedPodcastKey"
 	static let downloadedEpisodesKey = "downloadedEpisodesKey"
 	
-	
-
-	
-	
 	// MARK: - Downloaded Episodes
 	func downloadEpisode(episode: Episode) {
 		do {
@@ -28,7 +24,6 @@ extension UserDefaults {
 			print("Failed to encode episode:", encodeErr)
 		}
 	}
-	
 	
 	func downloadedEpisodes() -> [Episode] {
 		guard let episodesData = data(forKey: UserDefaults.downloadedEpisodesKey) else { return [] }
@@ -52,17 +47,14 @@ extension UserDefaults {
 		} catch let encodeErr {
 			print("Failed to encode:", encodeErr)
 		}
-		
-		
 	}
 	
 	// MARK: - Favorite podcasts
 	
 	func savedPodcastViewModels() -> [PodcastViewModel] {
+		guard let viewModelsData = UserDefaults.standard.data(forKey: UserDefaults.favoritedPodcastKey) else { return [] }
 		
-		guard let savedPodcastVMsData = UserDefaults.standard.data(forKey: UserDefaults.favoritedPodcastKey) else { return [] }
-		
-		let savedPodcastViewModels = NSKeyedUnarchiver.unarchiveObject(with: savedPodcastVMsData) as? [PodcastViewModel]
+		let savedPodcastViewModels = NSKeyedUnarchiver.unarchiveObject(with: viewModelsData) as? [PodcastViewModel]
 			?? [PodcastViewModel]()
 		
 		return savedPodcastViewModels

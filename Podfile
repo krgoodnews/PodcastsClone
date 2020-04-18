@@ -6,14 +6,13 @@ target 'CopyPodcasts' do
   use_frameworks!
 
   # Pods for CopyPodcasts
-
-  pod 'Alamofire', '~> 4.7'
-  pod 'SnapKit', '~> 4.0.0'
+  pod 'Alamofire', '~> 5.1'
+  pod 'SnapKit', '~> 5.0.0'
   pod 'SDWebImage', '~> 4.0'
   pod 'FeedKit', '~> 8.0'
+  pod 'Then'
 
-  pod 'RxSwift',    '~> 4.0'
-  pod 'RxCocoa',    '~> 4.0'
-
+  pod 'RxSwift', '~> 5'
+  pod 'RxCocoa', '~> 5'
 
 end

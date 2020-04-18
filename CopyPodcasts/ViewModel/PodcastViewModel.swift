@@ -8,6 +8,8 @@
 
 import UIKit
 
+import Then
+
 class PodcastListViewModel {
 	
 	private var apiService: APIService
@@ -41,7 +43,7 @@ class PodcastListViewModel {
 }
 
 struct PodcastViewModel {
-	
+
 	let podcast: Podcast
 	
 	let title: String

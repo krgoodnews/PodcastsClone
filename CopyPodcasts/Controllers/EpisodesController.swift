@@ -64,28 +64,27 @@ class EpisodesController: UITableViewController {
 		
 	}
 	
-	@objc fileprivate func handleFetchSavedPodcasts() {
+	@objc private func handleFetchSavedPodcasts() {
 		print("Fetching saved Podcasts from UserDefaults")
 		
 		// how to retrieve our Podcast object from UserDefaults
 		let savedPodcasts = UserDefaults.standard.savedPodcastViewModels()
 		
 		savedPodcasts.forEach({ (p) in
-			print(p.title ?? "")
+			print(p.title)
 		})
 	}
 	
-	@objc fileprivate func handleSaveFavorite() {
-		
+	@objc private func handleSaveFavorite() {
 		guard let podcast = self.podcastViewModel else { return }
 		
 		// 1. Transform podcast into data
 		var listOfPodcasts = UserDefaults.standard.savedPodcastViewModels()
 		listOfPodcasts.append(podcast)
-		
-		let data = NSKeyedArchiver.archivedData(withRootObject: listOfPodcasts)
-		
-		UserDefaults.standard.set(data, forKey: UserDefaults.favoritedPodcastKey)
+
+        let data = NSKeyedArchiver.archivedData(withRootObject: listOfPodcasts)
+
+        UserDefaults.standard.set(data, forKey: UserDefaults.favoritedPodcastKey)
 		
 		showBadgeHighlight()
 		
