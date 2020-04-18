@@ -96,6 +96,7 @@
                                 </imageView>
                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="JlK-lM-RXe">
                                     <rect key="frame" x="-2" y="486" width="370" height="37"/>
+                                    <color key="tintColor" red="0.58039215690000001" green="0.12941176469999999" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="HZP-tX-Qqy"/>
                                     </constraints>
@@ -178,6 +179,7 @@
                                         </imageView>
                                         <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="5au-yR-wCk">
                                             <rect key="frame" x="32.5" y="0.0" width="301.5" height="35"/>
+                                            <color key="tintColor" red="0.58039215690000001" green="0.12941176469999999" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="handleVolumeChange:" destination="uRz-JR-Grp" eventType="valueChanged" id="Wj1-ry-Bt6"/>
                                             </connections>

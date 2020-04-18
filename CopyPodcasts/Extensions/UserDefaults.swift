@@ -13,10 +13,6 @@ extension UserDefaults {
 	static let favoritedPodcastKey = "favoritedPodcastKey"
 	static let downloadedEpisodesKey = "downloadedEpisodesKey"
 	
-	
-
-	
-	
 	// MARK: - Downloaded Episodes
 	func downloadEpisode(episode: Episode) {
 		do {
@@ -28,7 +24,6 @@ extension UserDefaults {
 			print("Failed to encode episode:", encodeErr)
 		}
 	}
-	
 	
 	func downloadedEpisodes() -> [Episode] {
 		guard let episodesData = data(forKey: UserDefaults.downloadedEpisodesKey) else { return [] }
@@ -52,27 +47,25 @@ extension UserDefaults {
 		} catch let encodeErr {
 			print("Failed to encode:", encodeErr)
 		}
-		
-		
 	}
 	
 	// MARK: - Favorite podcasts
 	
-	func savedPodcasts() -> [Podcast] {
+	func savedPodcastViewModels() -> [PodcastViewModel] {
+		guard let viewModelsData = UserDefaults.standard.data(forKey: UserDefaults.favoritedPodcastKey) else { return [] }
 		
-		guard let savedPodcastsData = UserDefaults.standard.data(forKey: UserDefaults.favoritedPodcastKey) else { return [] }
+		let savedPodcastViewModels = NSKeyedUnarchiver.unarchiveObject(with: viewModelsData) as? [PodcastViewModel]
+			?? [PodcastViewModel]()
 		
-		let savedPodcasts = NSKeyedUnarchiver.unarchiveObject(with: savedPodcastsData) as? [Podcast] ?? [Podcast]()
-		
-		return savedPodcasts
+		return savedPodcastViewModels
 	}
 	
 	func deleteSavedPodcast(at index: Int) {
 		// delete podcast from UserDefaults
-		var savedPodcasts = UserDefaults.standard.savedPodcasts()
+		var savedPodcastViewModels = UserDefaults.standard.savedPodcastViewModels()
 		
-		savedPodcasts.remove(at: index)
-		let data = NSKeyedArchiver.archivedData(withRootObject: savedPodcasts)
+		savedPodcastViewModels.remove(at: index)
+		let data = NSKeyedArchiver.archivedData(withRootObject: savedPodcastViewModels)
 		UserDefaults.standard.set(data, forKey: UserDefaults.favoritedPodcastKey)
 		
 	}

@@ -12,7 +12,7 @@ class FavoritesController: UICollectionViewController, UICollectionViewDelegateF
 	
 	fileprivate let cellID = "cellID"
 	
-	var podcasts = UserDefaults.standard.savedPodcasts()
+	var podcastViewModels = UserDefaults.standard.savedPodcastViewModels()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -23,7 +23,7 @@ class FavoritesController: UICollectionViewController, UICollectionViewDelegateF
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		podcasts = UserDefaults.standard.savedPodcasts()
+		podcastViewModels = UserDefaults.standard.savedPodcastViewModels()
 		collectionView?.reloadData()
 		UIApplication.mainTabBarController()?.viewControllers?[1].tabBarItem.badgeValue = nil
 	}
@@ -54,7 +54,7 @@ class FavoritesController: UICollectionViewController, UICollectionViewDelegateF
 			UserDefaults.standard.deleteSavedPodcast(at: selectedIndexPath.item)
 			
 			// remove the podcast object from collection view
-			self.podcasts.remove(at: selectedIndexPath.item)
+			self.podcastViewModels.remove(at: selectedIndexPath.item)
 			self.collectionView?.deleteItems(at: [selectedIndexPath])
 			
 			
@@ -78,13 +78,13 @@ class FavoritesController: UICollectionViewController, UICollectionViewDelegateF
 	// MARK: - UICollectionView Delegate
 	
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return podcasts.count
+		return podcastViewModels.count
 	}
 	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! FavoritePodcastCell
 		
-		cell.podcast = self.podcasts[indexPath.item]
+		cell.podcastViewModel = self.podcastViewModels[indexPath.item]
 		
 		return cell
 	}
@@ -107,7 +107,7 @@ class FavoritesController: UICollectionViewController, UICollectionViewDelegateF
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		let episodesController = EpisodesController()
 		
-		episodesController.podcast = self.podcasts[indexPath.item]
+		episodesController.podcastViewModel = self.podcastViewModels[indexPath.item]
 		
 		navigationController?.pushViewController(episodesController, animated: true)
 	}

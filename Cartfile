@@ -1,4 +1,0 @@
-github "Alamofire/Alamofire" ~> 4.6
-github "rs/SDWebImage"
-github "nmdias/FeedKit"
-github "SnapKit/SnapKit" ~> 4.0.0

@@ -8,6 +8,8 @@
 
 import UIKit
 
+import SnapKit
+
 class MainTabBarController: UITabBarController {
 	
 	override func viewDidLoad() {
@@ -24,26 +26,25 @@ class MainTabBarController: UITabBarController {
 	}
 	
 	@objc func minimizePlayerDetails() {
+        playerDetailsView.snp.remakeConstraints {
+            $0.bottom.equalTo(tabBar.snp.top)
+            $0.height.equalTo(64)
+            $0.leading.trailing.equalTo(view)
+        }
 		
-		maximizedTopAnchorConstraint.isActive = false
-		bottomAnchorConstraint.constant = view.frame.height
-		minimizedTopAnchorConstraint.isActive = true
-		
-		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
 			self.view.layoutIfNeeded()
-			self.tabBar.transform = .identity
-			
+            self.tabBar.isHidden = false
 			self.playerDetailsView.backgroundMaximizedStackView.alpha = 0
 			self.playerDetailsView.miniPlayerView.alpha = 1
 		})
 	}
 	
 	func maximizePlayerDetails(episode: Episode?, playlistEpisodes: [Episode] = []) {
-		minimizedTopAnchorConstraint.isActive = false
-		maximizedTopAnchorConstraint.isActive = true
-		maximizedTopAnchorConstraint.constant = 0
-		
-		bottomAnchorConstraint.constant = 0
+        playerDetailsView.snp.remakeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.leading.trailing.bottom.equalTo(view)
+        }
 		
 		if episode != nil {
 			playerDetailsView.episode = episode
@@ -51,10 +52,9 @@ class MainTabBarController: UITabBarController {
 		
 		playerDetailsView.playlistEpisodes = playlistEpisodes
 		
-		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+		UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
 			self.view.layoutIfNeeded()
-			self.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
-			
+            self.tabBar.isHidden = true
 			self.playerDetailsView.backgroundMaximizedStackView.alpha = 1
 			self.playerDetailsView.miniPlayerView.alpha = 0
 		})
@@ -62,37 +62,14 @@ class MainTabBarController: UITabBarController {
 	
 	// MARK: - setup Functions
 	let playerDetailsView = PlayerDetailView.initFromNib()
-
-	var maximizedTopAnchorConstraint: NSLayoutConstraint!
-	var minimizedTopAnchorConstraint: NSLayoutConstraint!
-	var bottomAnchorConstraint: NSLayoutConstraint!
 	
-	fileprivate func setupPlayerDetailsView() {
-		print("Setting up PlayerDetilsView")
-		
-		
-		// use AutoLayout
+    fileprivate func setupPlayerDetailsView() {
 		view.insertSubview(playerDetailsView, belowSubview: tabBar)
-		
-		playerDetailsView.translatesAutoresizingMaskIntoConstraints = false // enable AutoLayout
-		
-		maximizedTopAnchorConstraint = playerDetailsView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height)
-		maximizedTopAnchorConstraint.isActive = true
-		
-		bottomAnchorConstraint = playerDetailsView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: view.frame.height)
-		bottomAnchorConstraint.isActive = true
 
-		
-		minimizedTopAnchorConstraint = playerDetailsView.topAnchor.constraint(equalTo: tabBar.topAnchor, constant: -64)
-		
-//		minimizedTopAnchorConstraint.isActive = true
-		
-//		playerDetailsView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-//		playerDetailsView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
 		playerDetailsView.snp.remakeConstraints { make -> Void in
+            make.bottom.equalTo(view.snp.bottom).offset(view.frame.height)
 			make.leading.trailing.equalTo(self.view)
 		}
-
 	}
 	
 	// MARK: - Setup Functions

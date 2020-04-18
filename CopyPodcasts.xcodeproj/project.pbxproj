@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		91ABD6CA0A73E70B6FF22849 /* Pods_CopyPodcasts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6233C1310F9BB99FAB8545C8 /* Pods_CopyPodcasts.framework */; };
 		EF52F09520994CF800506E26 /* FavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F09420994CF800506E26 /* FavoritesController.swift */; };
 		EF52F097209971B500506E26 /* FavoritePodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F096209971B500506E26 /* FavoritePodcastCell.swift */; };
 		EF52F099209B7EDF00506E26 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F098209B7EDF00506E26 /* UserDefaults.swift */; };
-		EF52F09C209DF6EC00506E26 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF52F09A209DF6EC00506E26 /* SnapKit.framework */; };
 		EF52F25020450B1C00998D0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F24F20450B1C00998D0F /* AppDelegate.swift */; };
 		EF52F25220450B1C00998D0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F25120450B1C00998D0F /* ViewController.swift */; };
 		EF52F25520450B1C00998D0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF52F25320450B1C00998D0F /* Main.storyboard */; };
@@ -19,13 +19,10 @@
 		EF52F26220450DD200998D0F /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F26120450DD200998D0F /* MainTabBarController.swift */; };
 		EF52F2652045219700998D0F /* PodcastsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F2642045219700998D0F /* PodcastsSearchController.swift */; };
 		EF52F2682045227400998D0F /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F2672045227400998D0F /* Podcast.swift */; };
-		EF52F26B20452BD700998D0F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF52F26A20452BD700998D0F /* Alamofire.framework */; };
 		EF52F26F204543DD00998D0F /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F26E204543DD00998D0F /* APIService.swift */; };
 		EF52F27220454A0100998D0F /* PodcastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF52F27120454A0100998D0F /* PodcastCell.xib */; };
 		EF52F27420454E6600998D0F /* PodcastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F27320454E6600998D0F /* PodcastCell.swift */; };
-		EF52F27620455B9C00998D0F /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF52F27520455B9C00998D0F /* SDWebImage.framework */; };
 		EF52F2AB2053F72500998D0F /* EpisodesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F2AA2053F72500998D0F /* EpisodesController.swift */; };
-		EF52F2AD20541C5100998D0F /* FeedKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF52F2AC20541C5100998D0F /* FeedKit.framework */; };
 		EF52F2AF20549D9C00998D0F /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F2AE20549D9C00998D0F /* Episode.swift */; };
 		EF52F2B220549E4100998D0F /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52F2B020549E4100998D0F /* EpisodeCell.swift */; };
 		EF52F2B320549E4100998D0F /* EpisodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF52F2B120549E4100998D0F /* EpisodeCell.xib */; };
@@ -34,12 +31,17 @@
 		EF75A6B0205A8EF100C8ED87 /* PlayerDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF75A6AF205A8EF100C8ED87 /* PlayerDetailView.xib */; };
 		EF75A6B2205A911700C8ED87 /* PlayerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF75A6B1205A911700C8ED87 /* PlayerDetailView.swift */; };
 		EF7972AB20A03472005F3C5C /* DownloadsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7972AA20A03472005F3C5C /* DownloadsController.swift */; };
+		EF7D773C20F4E45700CD07D3 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7D773B20F4E45700CD07D3 /* TableViewDataSource.swift */; };
+		EF9B34CE20EE6A1300E37750 /* PodcastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9B34CD20EE6A1300E37750 /* PodcastViewModel.swift */; };
 		EFD6D578206BD69F00A77578 /* CMTime+.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD6D577206BD69F00A77578 /* CMTime+.swift */; };
 		EFDFA5DE2085D63C002699B3 /* PlayerDetailsView+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDFA5DD2085D63C002699B3 /* PlayerDetailsView+Gestures.swift */; };
 		EFDFA5E02085E6B8002699B3 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDFA5DF2085E6B8002699B3 /* UIApplication.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		323190877F00A12F48D916AC /* Pods-CopyPodcasts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CopyPodcasts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CopyPodcasts/Pods-CopyPodcasts.debug.xcconfig"; sourceTree = "<group>"; };
+		4512161A6120FABF83DA10BB /* Pods-CopyPodcasts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CopyPodcasts.release.xcconfig"; path = "Pods/Target Support Files/Pods-CopyPodcasts/Pods-CopyPodcasts.release.xcconfig"; sourceTree = "<group>"; };
+		6233C1310F9BB99FAB8545C8 /* Pods_CopyPodcasts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CopyPodcasts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF52F09420994CF800506E26 /* FavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesController.swift; sourceTree = "<group>"; };
 		EF52F096209971B500506E26 /* FavoritePodcastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePodcastCell.swift; sourceTree = "<group>"; };
 		EF52F098209B7EDF00506E26 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
@@ -70,6 +72,8 @@
 		EF75A6AF205A8EF100C8ED87 /* PlayerDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerDetailView.xib; sourceTree = "<group>"; };
 		EF75A6B1205A911700C8ED87 /* PlayerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailView.swift; sourceTree = "<group>"; };
 		EF7972AA20A03472005F3C5C /* DownloadsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsController.swift; sourceTree = "<group>"; };
+		EF7D773B20F4E45700CD07D3 /* TableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
+		EF9B34CD20EE6A1300E37750 /* PodcastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastViewModel.swift; sourceTree = "<group>"; };
 		EFD6D577206BD69F00A77578 /* CMTime+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime+.swift"; sourceTree = "<group>"; };
 		EFDFA5DD2085D63C002699B3 /* PlayerDetailsView+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerDetailsView+Gestures.swift"; sourceTree = "<group>"; };
 		EFDFA5DF2085E6B8002699B3 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
@@ -80,22 +84,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF52F09C209DF6EC00506E26 /* SnapKit.framework in Frameworks */,
-				EF52F2AD20541C5100998D0F /* FeedKit.framework in Frameworks */,
-				EF52F27620455B9C00998D0F /* SDWebImage.framework in Frameworks */,
-				EF52F26B20452BD700998D0F /* Alamofire.framework in Frameworks */,
+				91ABD6CA0A73E70B6FF22849 /* Pods_CopyPodcasts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		43F3F3ECB1A3BE11426A3901 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				323190877F00A12F48D916AC /* Pods-CopyPodcasts.debug.xcconfig */,
+				4512161A6120FABF83DA10BB /* Pods-CopyPodcasts.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E67E997F244AC31A00953DAE /* PodCastsSearch */ = {
+			isa = PBXGroup;
+			children = (
+				EF52F2642045219700998D0F /* PodcastsSearchController.swift */,
+			);
+			path = PodCastsSearch;
+			sourceTree = "<group>";
+		};
 		EF52F24320450B1C00998D0F = {
 			isa = PBXGroup;
 			children = (
 				EF52F24E20450B1C00998D0F /* CopyPodcasts */,
 				EF52F24D20450B1C00998D0F /* Products */,
 				EF52F26920452BD700998D0F /* Frameworks */,
+				43F3F3ECB1A3BE11426A3901 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,6 +129,9 @@
 		EF52F24E20450B1C00998D0F /* CopyPodcasts */ = {
 			isa = PBXGroup;
 			children = (
+				E67E997F244AC31A00953DAE /* PodCastsSearch */,
+				EF7D773A20F4E44A00CD07D3 /* Data Sources */,
+				EF9B34CC20EE6A0200E37750 /* ViewModel */,
 				EF52F2B42054C0E700998D0F /* Extensions */,
 				EF52F270204549E900998D0F /* Views */,
 				EF52F26D204543CB00998D0F /* API */,
@@ -129,7 +151,6 @@
 		EF52F2632045218000998D0F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				EF52F2642045219700998D0F /* PodcastsSearchController.swift */,
 				EF52F2AA2053F72500998D0F /* EpisodesController.swift */,
 				EF52F09420994CF800506E26 /* FavoritesController.swift */,
 				EF7972AA20A03472005F3C5C /* DownloadsController.swift */,
@@ -154,6 +175,7 @@
 				EF52F2AC20541C5100998D0F /* FeedKit.framework */,
 				EF52F27520455B9C00998D0F /* SDWebImage.framework */,
 				EF52F26A20452BD700998D0F /* Alamofire.framework */,
+				6233C1310F9BB99FAB8545C8 /* Pods_CopyPodcasts.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -193,6 +215,22 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		EF7D773A20F4E44A00CD07D3 /* Data Sources */ = {
+			isa = PBXGroup;
+			children = (
+				EF7D773B20F4E45700CD07D3 /* TableViewDataSource.swift */,
+			);
+			path = "Data Sources";
+			sourceTree = "<group>";
+		};
+		EF9B34CC20EE6A0200E37750 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EF9B34CD20EE6A1300E37750 /* PodcastViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -200,10 +238,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EF52F25E20450B1C00998D0F /* Build configuration list for PBXNativeTarget "CopyPodcasts" */;
 			buildPhases = (
+				7E735714D373A9BB1F0BB0BE /* [CP] Check Pods Manifest.lock */,
 				EF52F24820450B1C00998D0F /* Sources */,
 				EF52F24920450B1C00998D0F /* Frameworks */,
 				EF52F24A20450B1C00998D0F /* Resources */,
-				EF52F26C20452BE600998D0F /* ShellScript */,
+				D29F2C7B7A7986FC6AF13C8E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -226,6 +265,7 @@
 				TargetAttributes = {
 					EF52F24B20450B1C00998D0F = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1140;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -270,22 +310,55 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		EF52F26C20452BE600998D0F /* ShellScript */ = {
+		7E735714D373A9BB1F0BB0BE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SDWebImage.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/FeedKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CopyPodcasts-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D29F2C7B7A7986FC6AF13C8E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CopyPodcasts/Pods-CopyPodcasts-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/FeedKit/FeedKit.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FeedKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CopyPodcasts/Pods-CopyPodcasts-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -306,7 +379,9 @@
 				EF52F26220450DD200998D0F /* MainTabBarController.swift in Sources */,
 				EFDFA5DE2085D63C002699B3 /* PlayerDetailsView+Gestures.swift in Sources */,
 				EF52F2B220549E4100998D0F /* EpisodeCell.swift in Sources */,
+				EF7D773C20F4E45700CD07D3 /* TableViewDataSource.swift in Sources */,
 				EF52F26F204543DD00998D0F /* APIService.swift in Sources */,
+				EF9B34CE20EE6A1300E37750 /* PodcastViewModel.swift in Sources */,
 				EF52F099209B7EDF00506E26 /* UserDefaults.swift in Sources */,
 				EF52F2B62054C0F300998D0F /* String+.swift in Sources */,
 				EF7972AB20A03472005F3C5C /* DownloadsController.swift in Sources */,
@@ -454,6 +529,7 @@
 		};
 		EF52F25F20450B1C00998D0F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 323190877F00A12F48D916AC /* Pods-CopyPodcasts.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -467,13 +543,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.krgoodnews.CopyPodcasts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		EF52F26020450B1C00998D0F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4512161A6120FABF83DA10BB /* Pods-CopyPodcasts.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -487,7 +564,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.krgoodnews.CopyPodcasts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

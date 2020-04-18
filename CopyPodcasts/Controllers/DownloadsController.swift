@@ -28,7 +28,7 @@ class DownloadsController: UITableViewController {
 	@objc fileprivate func handleDownloadComplete(notification: Notification) {
 		guard let episodeDownloadComplete = notification.object as? APIService.EpisodeDownloadCompleteTuple else { return }
 		
-		guard let index = self.episodes.index(where: { $0.title == episodeDownloadComplete.episodeTitle }) else { return }
+		guard let index = self.episodes.firstIndex(where: { $0.title == episodeDownloadComplete.episodeTitle }) else { return }
 		
 		self.episodes[index].fileUrl = episodeDownloadComplete.fileUrl
 
@@ -43,7 +43,7 @@ class DownloadsController: UITableViewController {
 		print(progress, title)
 		
 		// let's find the index using title
-		guard let index = self.episodes.index(where: { $0.title == title }) else { return }
+		guard let index = self.episodes.firstIndex(where: { $0.title == title }) else { return }
 		
 		guard let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? EpisodeCell else { return }
 		
