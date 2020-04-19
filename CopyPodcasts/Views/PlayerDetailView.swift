@@ -10,7 +10,7 @@ import UIKit
 import AVKit
 import MediaPlayer
 
-class PlayerDetailView: UIView {
+final class PlayerDetailView: UIView {
 
     var episode: Episode! {
         didSet {
@@ -478,5 +478,5 @@ class PlayerDetailView: UIView {
 
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
-	return input.rawValue
+    return input.rawValue
 }

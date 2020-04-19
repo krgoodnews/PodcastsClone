@@ -9,26 +9,26 @@
 import UIKit
 import SDWebImage
 
-class PodcastCell: UITableViewCell {
-	@IBOutlet weak var podcastImageView: UIImageView! {
-		didSet {
-			podcastImageView.sd_setShowActivityIndicatorView(true)
-			podcastImageView.sd_setIndicatorStyle(.gray)
-		}
-	}
-	@IBOutlet weak var trackNameLabel: UILabel!
-	@IBOutlet weak var artistNameLabel: UILabel!
-	@IBOutlet weak var episodeCountLabel: UILabel!
-	
-	var podcastViewModel: PodcastViewModel? {
-		didSet {
-			guard let vm = podcastViewModel else { return }
-			trackNameLabel.text = vm.title
-			artistNameLabel.text = vm.artist
-			episodeCountLabel.text = vm.episodeString
-			
-			podcastImageView.sd_setImage(with: vm.artworkUrl)
-		}
-	}
+final class PodcastCell: UITableViewCell {
+    @IBOutlet weak var podcastImageView: UIImageView! {
+        didSet {
+            podcastImageView.sd_setShowActivityIndicatorView(true)
+            podcastImageView.sd_setIndicatorStyle(.gray)
+        }
+    }
+    @IBOutlet weak var trackNameLabel: UILabel!
+    @IBOutlet weak var artistNameLabel: UILabel!
+    @IBOutlet weak var episodeCountLabel: UILabel!
+
+    var podcastViewModel: PodcastViewModel? {
+        didSet {
+            guard let vm = podcastViewModel else { return }
+            trackNameLabel.text = vm.title
+            artistNameLabel.text = vm.artist
+            episodeCountLabel.text = vm.episodeString
+
+            podcastImageView.sd_setImage(with: vm.artworkUrl)
+        }
+    }
 
 }
