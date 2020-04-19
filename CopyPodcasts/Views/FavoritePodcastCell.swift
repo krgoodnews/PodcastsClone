@@ -16,7 +16,7 @@ class FavoritePodcastCell: UICollectionViewCell {
 //			nameLabel.text = podcast.trackName
 //			artistNameLabel.text = podcast.artistName
 //
-//			let url = URL(string: podcast.artworkUrl600 ?? "")
+//			let url = URL(string: podcast.artworkURL600 ?? "")
 //			imageView.sd_setImage(with: url)
 //		}
 //	}
@@ -26,7 +26,7 @@ class FavoritePodcastCell: UICollectionViewCell {
 			nameLabel.text = podcastViewModel?.title
 			artistNameLabel.text = podcastViewModel?.artist
 			
-			let url = URL(string: podcastViewModel?.podcast.artworkUrl600 ?? "")
+			let url = URL(string: podcastViewModel?.podcast.artworkURL600 ?? "")
 			imageView.sd_setImage(with: url)
 		}
 	}

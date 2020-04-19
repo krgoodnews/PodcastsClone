@@ -20,9 +20,9 @@ class EpisodesController: UITableViewController {
 	
 	fileprivate func fetchEpisodes() {
 		let podcast = podcastViewModel?.podcast
-		print("Looking for episodes at feed url:", podcast?.feedUrl ?? "")
+		print("Looking for episodes at feed url:", podcast?.feedURLString ?? "")
 		
-		guard let feedUrl = podcast?.feedUrl else { return }
+		guard let feedUrl = podcast?.feedURLString else { return }
 		
 		APIService.shared.fetchEpisodes(feedUrl: feedUrl) { (episodes) in
 			self.episodes = episodes
@@ -82,9 +82,13 @@ class EpisodesController: UITableViewController {
 		var listOfPodcasts = UserDefaults.standard.savedPodcastViewModels()
 		listOfPodcasts.append(podcast)
 
-        let data = NSKeyedArchiver.archivedData(withRootObject: listOfPodcasts)
-
-        UserDefaults.standard.set(data, forKey: UserDefaults.favoritedPodcastKey)
+        do {
+            let encoded = try PropertyListEncoder().encode(listOfPodcasts)
+            let data = NSKeyedArchiver.archivedData(withRootObject: encoded)
+            UserDefaults.standard.set(data, forKey: UserDefaults.favoritedPodcastKey)
+        } catch {
+            print("Save Failed")
+        }
 		
 		showBadgeHighlight()
 		

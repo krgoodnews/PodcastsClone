@@ -52,12 +52,16 @@ extension UserDefaults {
 	// MARK: - Favorite podcasts
 	
 	func savedPodcastViewModels() -> [PodcastViewModel] {
-		guard let viewModelsData = UserDefaults.standard.data(forKey: UserDefaults.favoritedPodcastKey) else { return [] }
-		
-		let savedPodcastViewModels = NSKeyedUnarchiver.unarchiveObject(with: viewModelsData) as? [PodcastViewModel]
-			?? [PodcastViewModel]()
-		
-		return savedPodcastViewModels
+		guard let viewModelsData = UserDefaults.standard.data(forKey: UserDefaults.favoritedPodcastKey),
+        let data = NSKeyedUnarchiver.unarchiveObject(with: viewModelsData) as? Data else { return [] }
+
+        do {
+            let viewModels = try PropertyListDecoder().decode([PodcastViewModel].self, from: data)
+            return viewModels
+        } catch {
+            print("---Retrieve Failed")
+            return []
+        }
 	}
 	
 	func deleteSavedPodcast(at index: Int) {
