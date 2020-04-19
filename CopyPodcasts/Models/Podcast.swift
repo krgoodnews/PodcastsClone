@@ -9,11 +9,11 @@
 import Foundation
 
 final class Podcast: Codable {
-	var trackName: String?
-	var artistName: String?
-	var artworkURL600: String?
-	var trackCount: Int?
-	var feedURLString: String?
+    var trackName: String?
+    var artistName: String?
+    var artworkURL600: String?
+    var trackCount: Int?
+    var feedURLString: String?
 
     enum CodingKeys: String, CodingKey {
         case trackName

@@ -10,7 +10,7 @@ import UIKit
 
 private let cellID = "podcastCellID"
 
-class PodcastsSearchController: UITableViewController {
+final class PodcastsSearchController: UITableViewController {
 
     //TODO: private var apiService: APIService = APIService()
     private var apiService: APIService!

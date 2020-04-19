@@ -10,7 +10,7 @@ import UIKit
 
 import Then
 
-class PodcastListViewModel {
+final class PodcastListViewModel {
 
     private var apiService: APIService
     private(set) var podcastViewModels = [PodcastViewModel]()
